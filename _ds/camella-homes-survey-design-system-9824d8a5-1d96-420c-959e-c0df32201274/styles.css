@@ -1,0 +1,31 @@
+@import url('tokens/colors.css');
+@import url('tokens/typography.css');
+@import url('tokens/spacing.css');
+@import url('tokens/shadows.css');
+
+html{scroll-behavior:smooth;}
+body{
+background:var(--page-bg);
+color:var(--text-body);
+font-family:var(--font-sans);
+transition:background-color 200ms ease-in-out,color 200ms ease-in-out;
+--accent-primary:var(--harvest-orange);
+--accent-hover:#c2600f;
+--text-on-primary:var(--black);
+}
+h1,h2,h3{font-family:var(--font-title);text-wrap:pretty;}
+:focus-visible{
+outline:2px solid var(--border-focus);
+outline-offset:2px;
+box-shadow:var(--shadow-focus-ring);
+}
+:focus:not(:focus-visible){outline:none;}
+nav[aria-label="Sections"] button{
+text-transform:uppercase;
+letter-spacing:.08em;
+font-size:13px !important;
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto;}
+*,*::before,*::after{animation-duration:1ms !important;transition-duration:1ms !important;}
+}

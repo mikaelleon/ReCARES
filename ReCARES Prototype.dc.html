@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+try{var t=localStorage.getItem('recares-theme')||'light';document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');document.documentElement.style.backgroundColor=t==='dark'?'#0b0b0b':'#e5ebe8';}catch(e){}
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/tokens/colors.css">
+<link rel="stylesheet" href="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/tokens/typography.css">
+<link rel="stylesheet" href="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/tokens/shadows.css">
+<link rel="stylesheet" href="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/styles.css">
+<script src="_ds/camella-homes-survey-design-system-9824d8a5-1d96-420c-959e-c0df32201274/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;padding:0;}
+*{box-sizing:border-box;}
+body{font-family:var(--font-sans),-apple-system,'Segoe UI',sans-serif;-webkit-text-size-adjust:100%;}
+a{color:#13693F;font-weight:700;}
+a:hover{color:#F78021;}
+@keyframes rc-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0s !important;transition-duration:0s !important;}}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="--accent-primary:#F78021;--accent-hover:#c2600f;--text-on-primary:#0B0B0B;min-height:100vh;background:var(--page-bg);color:var(--text-body);font-family:var(--font-sans);font-size:16px;line-height:1.55;">
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+<main style="min-height:100vh;display:flex;flex-direction:column;">
+ <div style="display:flex;justify-content:flex-end;padding:16px 24px;">
+  <button onClick="{{ toggleTheme }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--border-default);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-body);">
+   <span style="width:18px;height:18px;background:currentColor;mask:url({{ themeIcon }}) center/contain no-repeat;"></span>{{ themeLabel }}
+  </button>
+ </div>
+ <div style="flex:1;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;justify-content:center;max-width:1120px;width:100%;margin:0 auto;padding:16px 32px 64px;">
+  <section style="flex:1 1 380px;max-width:480px;display:flex;flex-direction:column;gap:24px;">
+   <div style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;font-family:var(--font-wordmark);font-size:clamp(44px,8vw,72px);font-weight:700;letter-spacing:.01em;line-height:1;" aria-label="ReCARES">
+     <sc-for list="{{ wordPage }}" as="w" hint-placeholder-count="7"><span style="color:{{ w.color }};">{{ w.ch }}</span></sc-for>
+    </div>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Camella Homes Tibig HOA · Lipa City, Batangas</span>
+   </div>
+   <h1 style="font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);margin:0;text-wrap:pretty;">Safety first. Everyday HOA services beside it.</h1>
+   <p style="margin:0;font-size:16px;text-wrap:pretty;">Looking after every household comes before the paperwork. Certificates and concerns are here on your phone, with no trip to the office.</p>
+   <div style="display:flex;height:22px;overflow:hidden;max-width:240px;border-radius:4px;">
+    <span style="flex:1;background:#13693F;"></span><span style="flex:1;background:#3DB579;"></span><span style="flex:1;background:#F78021;"></span><span style="flex:1;background:#FECA09;"></span>
+   </div>
+   <div style="display:flex;flex-direction:column;gap:16px;background:var(--surface-1);border:1px solid var(--border-subtle);border-radius:16px;padding:32px;">
+    <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Sign in</h2>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Username" placeholder="e.g. resident.demo" value="{{ lu }}" onChange="{{ setLu }}" hint-size="100%,72px"></x-import>
+    <div onKeyDown="{{ loginKey }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Password" type="password" value="{{ lp }}" onChange="{{ setLp }}" error="{{ lerr }}" hint-size="100%,72px"></x-import></div>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ doLogin }}" hint-size="100%,44px">Sign in</x-import>
+   </div>
+  </section>
+  <aside aria-label="Demo accounts" style="flex:1 1 340px;max-width:440px;display:flex;flex-direction:column;gap:16px;border:2px dashed var(--border-structural);border-radius:16px;padding:24px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Demo accounts</span>
+    <span style="font-size:13px;font-weight:700;padding:2px 8px;border-radius:4px;background:#FECA09;color:#0B0B0B;">PROTOTYPE ONLY</span>
+   </div>
+   <p style="margin:0;font-size:14px;color:var(--text-caption);">One-tap sign-in for presenters. Password for every account: demo1234</p>
+   <div style="display:flex;flex-direction:column;gap:8px;">
+    <sc-for list="{{ demoAccounts }}" as="a" hint-placeholder-count="5">
+     <button onClick="{{ a.pick }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:60px;padding:10px 14px;border-radius:8px;border:1px solid var(--border-default);" style-hover="background:var(--surface-2);">
+      <span style="flex:1;display:flex;flex-direction:column;min-width:0;">
+       <span style="font-weight:700;font-size:15px;">{{ a.label }}</span>
+       <span style="font-size:14px;color:var(--text-caption);">{{ a.name }} · {{ a.user }}</span>
+      </span>
+      <span style="width:18px;height:18px;flex:none;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/arrow-right.svg) center/contain no-repeat;"></span>
+     </button>
+    </sc-for>
+   </div>
+   <button onClick="{{ resetDemo }}" style="all:unset;cursor:pointer;align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;text-decoration:underline;">
+    <span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/rotate-ccw.svg) center/contain no-repeat;"></span>Reset demo data
+   </button>
+  </aside>
+ </div>
+</main>
+</sc-if>
+<sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
+<header style="position:sticky;top:0;z-index:30;background:{{ headerBg }};color:{{ headerFg }};border-bottom:1px solid {{ headerBd }};box-shadow:0 4px 18px rgba(0,0,0,.22);">
+ <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;max-width:1280px;margin:0 auto;padding:10px 24px;min-height:64px;">
+  <div style="display:flex;font-family:var(--font-wordmark);font-size:24px;font-weight:700;line-height:1;letter-spacing:.01em;" aria-label="ReCARES">
+   <sc-for list="{{ wordChrome }}" as="w" hint-placeholder-count="7"><span style="color:{{ w.color }};">{{ w.ch }}</span></sc-for>
+  </div>
+  <div style="display:flex;flex-direction:column;line-height:1.3;min-width:0;">
+   <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">{{ roleLabel }}</span>
+   <span style="font-size:14px;">{{ userName }}</span>
+  </div>
+  <div style="flex:1;"></div>
+  <button onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" style="all:unset;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(255,255,255,.55);">
+   <span style="width:20px;height:20px;background:currentColor;mask:url({{ themeIcon }}) center/contain no-repeat;"></span>
+  </button>
+  <div style="position:relative;">
+   <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-haspopup="menu" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:8px;border:2px dashed currentColor;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">
+    <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/repeat.svg) center/contain no-repeat;"></span>Switch role
+   </button>
+   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="menu" style="position:absolute;right:0;top:52px;width:300px;max-width:calc(100vw - 32px);background:var(--surface-3);color:var(--text-body);border:1px solid var(--surface-3-border);border-radius:16px;box-shadow:var(--shadow-modal);padding:12px;display:flex;flex-direction:column;gap:4px;z-index:40;">
+     <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);padding:4px 8px;">Demo · sign in as</span>
+     <sc-for list="{{ roleOptions }}" as="o" hint-placeholder-count="5">
+      <button role="menuitem" onClick="{{ o.pick }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;min-height:48px;justify-content:center;padding:6px 10px;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};" style-hover="opacity:.85;">
+       <span style="font-weight:700;font-size:15px;">{{ o.label }}</span><span style="font-size:13px;">{{ o.name }}</span>
+      </button>
+     </sc-for>
+     <div style="height:1px;background:var(--border-structural);margin:6px 0;"></div>
+     <button role="menuitem" onClick="{{ tryBoundary }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px;border-radius:8px;font-size:14px;font-weight:700;" style-hover="background:var(--surface-2);">
+      <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/shield-x.svg) center/contain no-repeat;"></span>{{ boundaryLabel }}
+     </button>
+     <button role="menuitem" onClick="{{ exitDemo }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px;border-radius:8px;font-size:14px;font-weight:700;" style-hover="background:var(--surface-2);">
+      <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/log-out.svg) center/contain no-repeat;"></span>Exit demo
+     </button>
+    </div>
+   </sc-if>
+  </div>
+ </div>
+ <sc-if value="{{ isHandler }}" hint-placeholder-val="{{ false }}">
+  <div style="background:#0B0B0B;color:#FFFFFF;">
+   <div style="max-width:1280px;margin:0 auto;padding:8px 24px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px;">
+    <span style="display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:#FECA09;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/lock.svg) center/contain no-repeat;"></span>Confidential workspace</span>
+    <span>RA 9262 and RA 7610 records only. Identity reveals are logged. Press Esc to hide the screen.</span>
+   </div>
+  </div>
+ </sc-if>
+</header>
+<sc-if value="{{ sideNarrow }}" hint-placeholder-val="{{ false }}">
+ <nav aria-label="Sections" style="display:flex;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--border-subtle);">
+  <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="3">
+   <button onClick="{{ n.go }}" aria-current="{{ n.current }}" style="all:unset;box-sizing:border-box;flex:none;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:700;background:{{ n.bg }};color:{{ n.fg }};border:1px solid var(--border-subtle);">
+    <span style="width:18px;height:18px;background:currentColor;mask:url({{ n.iconUrl }}) center/contain no-repeat;"></span>{{ n.label }}
+    <sc-if value="{{ n.hasCount }}"><span style="min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#0B0B0B;color:#FFFFFF;font-size:12px;display:inline-flex;align-items:center;justify-content:center;">{{ n.count }}</span></sc-if>
+   </button>
+  </sc-for>
+ </nav>
+</sc-if>
+<div style="display:flex;gap:32px;max-width:1280px;margin:0 auto;padding:32px 24px 140px;align-items:flex-start;">
+ <sc-if value="{{ sideWide }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="Sections" style="position:sticky;top:100px;flex:0 0 240px;display:flex;flex-direction:column;gap:4px;">
+   <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="3">
+    <button onClick="{{ n.go }}" aria-current="{{ n.current }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border-radius:8px;font-size:15px;font-weight:700;background:{{ n.bg }};color:{{ n.fg }};" style-hover="opacity:.85;">
+     <span style="width:20px;height:20px;flex:none;background:currentColor;mask:url({{ n.iconUrl }}) center/contain no-repeat;"></span>
+     <span style="flex:1;">{{ n.label }}</span>
+     <sc-if value="{{ n.hasCount }}"><span style="min-width:24px;height:24px;padding:0 7px;border-radius:12px;background:#0B0B0B;color:#FFFFFF;font-size:12px;display:inline-flex;align-items:center;justify-content:center;">{{ n.count }}</span></sc-if>
+    </button>
+   </sc-for>
+  </nav>
+ </sc-if>
+ <main style="flex:1;min-width:0;display:flex;flex-direction:column;gap:24px;">
+  <sc-if value="{{ denied }}" hint-placeholder-val="{{ false }}">
+   <section style="max-width:640px;margin:32px auto;display:flex;flex-direction:column;gap:16px;align-items:flex-start;background:var(--surface-1);border:1px solid var(--border-subtle);border-radius:16px;padding:32px;">
+    <span style="width:40px;height:40px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/shield-x.svg) center/contain no-repeat;"></span>
+    <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Access restricted</h1>
+    <p style="margin:0;">The page <strong>{{ deniedPath }}</strong> is outside the permissions of the <strong>{{ roleLabel }}</strong> role. Nothing from that page was loaded.</p>
+    <p style="margin:0;font-size:14px;color:var(--text-caption);">This attempt was recorded in the system audit log.</p>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ deniedBack }}" hint-size="auto,44px">Back to my pages</x-import>
+   </section>
+  </sc-if>
+<sc-if value="{{ scr.resident_home }}" hint-placeholder-val="{{ false }}">
+ <div style="width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:32px;">
+  <section style="display:flex;flex-direction:column;gap:8px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Phase 2 · Block 4 Lot 12 · Verified resident</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">{{ greeting }}</h1>
+   <p style="margin:0;">Safety in the subdivision comes first. The cards below are for everyday HOA services.</p>
+  </section>
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;">
+   <button onClick="{{ goNew }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:var(--card-fill-neutral);color:var(--text-on-card-neutral);min-height:150px;" style-hover="opacity:.9;">
+    <span style="width:28px;height:28px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/message-square-warning.svg) center/contain no-repeat;"></span>
+    <span style="font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Report a concern</span>
+    <span style="font-size:14px;">Noise, security, sanitation, or a private household matter.</span>
+   </button>
+   <button onClick="{{ goNewRequest }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:var(--card-fill-neutral);color:var(--text-on-card-neutral);min-height:150px;" style-hover="opacity:.9;">
+    <span style="width:28px;height:28px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-text.svg) center/contain no-repeat;"></span>
+    <span style="font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Request a service</span>
+    <span style="font-size:14px;">Documents, clearances, gate passes, and repairs, released online.</span>
+   </button>
+   <button onClick="{{ goMine }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:#13693F;color:#E5EBE8;min-height:150px;" style-hover="opacity:.92;">
+    <span style="width:28px;height:28px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/list-checks.svg) center/contain no-repeat;"></span>
+    <span style="font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">My submissions</span>
+    <span style="font-size:14px;">{{ activeLabel }}</span>
+   </button>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:12px;">
+   <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Recent</h2>
+   <sc-for list="{{ recent }}" as="t" hint-placeholder-count="3">
+    <button onClick="{{ t.open }}" style="all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:16px 20px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);" style-hover="background:var(--surface-2);">
+     <span style="width:24px;height:24px;flex:none;background:currentColor;mask:url({{ t.catIcon }}) center/contain no-repeat;"></span>
+     <span style="flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-weight:700;">{{ t.title }}</span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ t.id }} · {{ t.category }} · {{ t.created }}</span>
+     </span>
+     <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;background:{{ t.sbg }};color:{{ t.sfg }};border:1px solid {{ t.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ t.sicon }}) center/contain no-repeat;"></span>{{ t.slabel }}</span>
+    </button>
+   </sc-for>
+  </section>
+  <section aria-label="Presenter walkthrough" style="display:flex;flex-direction:column;gap:16px;border:2px dashed var(--border-structural);border-radius:16px;padding:24px;">
+   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Demo walkthrough · Resident scenarios</span>
+    <span style="font-size:13px;font-weight:700;padding:2px 8px;border-radius:4px;background:#FECA09;color:#0B0B0B;">PRESENTER</span>
+   </div>
+   <sc-for list="{{ scenarios }}" as="c" hint-placeholder-count="3">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--border-subtle);">
+     <span style="font-size:24px;font-weight:700;color:var(--text-headline);width:40px;">{{ c.num }}</span>
+     <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-weight:700;">{{ c.group }}</span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ c.desc }}</span>
+     </div>
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ c.load }}" hint-size="auto,40px">Load scenario</x-import>
+    </div>
+   </sc-for>
+  </section>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.resident_new }}" hint-placeholder-val="{{ false }}">
+ <div style="width:100%;max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:24px;">
+  <div style="display:flex;flex-direction:column;gap:8px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">New submission</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Tell the HOA what you need</h1>
+   <p style="margin:0;">ReCARES sorts your submission automatically and sends it to the right person.</p>
+  </div>
+  <div role="group" aria-label="Submission type" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:4px;border:1px solid var(--border-default);border-radius:12px;">
+   <button onClick="{{ setKindReport }}" aria-pressed="{{ kindReportPressed }}" style="all:unset;box-sizing:border-box;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-align:center;background:{{ kindReportBg }};color:{{ kindReportFg }};">Report a concern</button>
+   <button onClick="{{ setKindRequest }}" aria-pressed="{{ kindReqPressed }}" style="all:unset;box-sizing:border-box;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-align:center;background:{{ kindReqBg }};color:{{ kindReqFg }};">Service request</button>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;background:var(--surface-1);border:1px solid var(--border-subtle);border-radius:16px;padding:32px;">
+   <div style="display:flex;flex-direction:column;gap:6px;">
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Select" label="Topic" required="{{ true }}" placeholder="Choose a topic" options="{{ topicOptions }}" value="{{ fTopic }}" onChange="{{ setTopic }}" hint-size="100%,72px"></x-import>
+    <sc-if value="{{ hasErrTopic }}"><span style="font-size:14px;color:#D64545;font-weight:700;">{{ errTopic }}</span></sc-if>
+   </div>
+   <sc-if value="{{ isConfidentialTopic }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:8px;background:var(--surface-2);">
+     <span style="width:20px;height:20px;flex:none;margin-top:2px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/lock.svg) center/contain no-repeat;"></span>
+     <span style="font-size:15px;">This goes only to the designated case handler. Front-desk staff will see that a report exists, never its contents. You can write as little as you like.</span>
+    </div>
+   </sc-if>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Short title" required="{{ true }}" placeholder="e.g. Streetlight out near our gate" value="{{ fTitle }}" onChange="{{ setTitle }}" error="{{ errTitle }}" hint-size="100%,72px"></x-import>
+   <label style="display:flex;flex-direction:column;gap:6px;">
+    <span style="font-size:14px;font-weight:700;display:flex;gap:4px;">Details<span style="color:#F78021;" aria-label="required">*</span></span>
+    <textarea value="{{ fDesc }}" onChange="{{ setDesc }}" rows="5" placeholder="What happened, or what do you need?" style="font-family:var(--font-sans);font-size:16px;line-height:1.55;color:var(--text-body);background:var(--surface-2);border:1px solid {{ descBorder }};border-radius:8px;padding:12px 14px;resize:vertical;min-height:120px;"></textarea>
+    <sc-if value="{{ hasErrDesc }}"><span style="font-size:14px;color:#D64545;font-weight:700;">{{ errDesc }}</span></sc-if>
+   </label>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Location" value="{{ fLoc }}" onChange="{{ setLoc }}" helperText="Defaults to your registered unit. Change it if the concern is elsewhere." hint-size="100%,92px"></x-import>
+   <div style="display:flex;flex-direction:column;gap:10px;">
+    <span style="font-size:14px;font-weight:700;">Attachments</span>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+     <sc-for list="{{ fAttach }}" as="a" hint-placeholder-count="0">
+      <span style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 6px 0 12px;border-radius:8px;border:1px solid var(--border-default);font-size:14px;">
+       <span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/paperclip.svg) center/contain no-repeat;"></span>{{ a.name }}
+       <button onClick="{{ a.remove }}" aria-label="Remove attachment" style="all:unset;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px;"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;"></span></button>
+      </span>
+     </sc-for>
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ addAttach }}" hint-size="auto,40px">Add photo or file</x-import>
+    </div>
+   </div>
+   <button onClick="{{ toggleAssist }}" role="checkbox" aria-checked="{{ assistOn }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:8px;border:1px solid var(--border-subtle);">
+    <span style="width:24px;height:24px;flex:none;border-radius:4px;border:2px solid {{ assistBd }};background:{{ assistBg }};display:flex;align-items:center;justify-content:center;"><span style="width:16px;height:16px;background:{{ assistFg }};mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;"></span></span>
+    <span style="display:flex;flex-direction:column;gap:2px;">
+     <span style="font-weight:700;">I cannot easily visit the HOA office</span>
+     <span style="font-size:14px;color:var(--text-caption);">For PWD, senior, or mobility-limited residents. Staff will complete everything online, including document release.</span>
+    </span>
+   </button>
+   <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:8px;">
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ submitForm }}" hint-size="auto,44px">Submit</x-import>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onClick="{{ cancelForm }}" hint-size="auto,44px">Cancel</x-import>
+   </div>
+  </div>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.resident_mine }}" hint-placeholder-val="{{ false }}">
+ <div style="width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px;">
+  <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">My submissions</h1>
+  <div role="group" aria-label="Filter" style="display:flex;gap:8px;flex-wrap:wrap;">
+   <sc-for list="{{ mineFilters }}" as="f" hint-placeholder-count="4">
+    <button onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 16px;display:flex;align-items:center;gap:8px;border-radius:8px;font-size:14px;font-weight:700;background:{{ f.bg }};color:{{ f.fg }};border:1px solid {{ f.bd }};">{{ f.label }} <span style="font-weight:400;">{{ f.count }}</span></button>
+   </sc-for>
+  </div>
+  <sc-for list="{{ mineList }}" as="t" hint-placeholder-count="4">
+   <button onClick="{{ t.open }}" style="all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:16px 20px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);" style-hover="background:var(--surface-2);">
+    <span style="width:24px;height:24px;flex:none;background:currentColor;mask:url({{ t.catIcon }}) center/contain no-repeat;"></span>
+    <span style="flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:2px;">
+     <span style="font-weight:700;">{{ t.title }}</span>
+     <span style="font-size:14px;color:var(--text-caption);">{{ t.id }} · {{ t.kindLabel }} · {{ t.category }} · {{ t.created }}</span>
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;background:{{ t.sbg }};color:{{ t.sfg }};border:1px solid {{ t.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ t.sicon }}) center/contain no-repeat;"></span>{{ t.slabel }}</span>
+   </button>
+  </sc-for>
+  <sc-if value="{{ mineEmpty }}"><p style="margin:0;color:var(--text-caption);">Nothing here yet.</p></sc-if>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.resident_detail }}" hint-placeholder-val="{{ false }}">
+ <div style="width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:24px;">
+  <button onClick="{{ goMine }}" style="all:unset;cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:700;">
+   <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/arrow-left.svg) center/contain no-repeat;"></span>My submissions
+  </button>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">{{ detail.id }} · {{ detail.kindLabel }} · {{ detail.created }}</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);text-wrap:pretty;">{{ detail.title }}</h1>
+  </div>
+  <sc-if value="{{ detail.showSteps }}">
+   <ol aria-label="Status" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ detail.stepCols }};gap:8px;">
+    <sc-for list="{{ detail.steps }}" as="p" hint-placeholder-count="4">
+     <li style="display:flex;flex-direction:column;gap:8px;">
+      <span style="height:6px;border-radius:3px;background:{{ p.bar }};"></span>
+      <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:{{ p.weight }};color:{{ p.fg }};"><span style="width:16px;height:16px;flex:none;background:currentColor;mask:url({{ p.iconUrl }}) center/contain no-repeat;"></span>{{ p.label }}</span>
+     </li>
+    </sc-for>
+   </ol>
+  </sc-if>
+  <div style="display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:16px;border:1px solid var(--border-subtle);">
+   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;">
+    <span style="display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:0 12px;border-radius:8px;background:var(--surface-2);font-size:14px;font-weight:700;">
+     <sc-if value="{{ detail.isRunning }}"><span style="width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:rc-spin 800ms linear infinite;"></span></sc-if>
+     <sc-if value="{{ detail.notRunning }}"><span style="width:16px;height:16px;background:currentColor;mask:url({{ detail.catIcon }}) center/contain no-repeat;"></span></sc-if>
+     {{ detail.category }}
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ detail.sbg }};color:{{ detail.sfg }};border:1px solid {{ detail.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ detail.sicon }}) center/contain no-repeat;"></span>{{ detail.slabel }}</span>
+   </div>
+   <span style="font-size:14px;color:var(--text-caption);">{{ detail.aiLine }}</span>
+   <sc-if value="{{ detail.hasCase }}">
+    <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;"><span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/link.svg) center/contain no-repeat;"></span>Linked to Case #{{ detail.caseId }} · related reports in this area</span>
+   </sc-if>
+   <sc-if value="{{ detail.sensNote }}">
+    <span style="display:flex;align-items:flex-start;gap:8px;font-size:15px;"><span style="width:18px;height:18px;flex:none;margin-top:3px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/lock.svg) center/contain no-repeat;"></span>Routed privately to the designated case handler. Front-desk staff cannot view this report. Replies will appear below.</span>
+   </sc-if>
+  </div>
+  <section style="display:flex;flex-direction:column;gap:8px;">
+   <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Details</h2>
+   <p style="margin:0;text-wrap:pretty;">{{ detail.desc }}</p>
+   <span style="font-size:14px;color:var(--text-caption);">{{ detail.locationLabel }}</span>
+   <sc-if value="{{ detail.needsAssist }}"><span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/accessibility.svg) center/contain no-repeat;"></span>Online completion requested · no office visit</span></sc-if>
+   <sc-if value="{{ detail.hasAttach }}">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;"><sc-for list="{{ detail.attachments }}" as="a"><span style="display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--border-default);font-size:14px;"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/paperclip.svg) center/contain no-repeat;"></span>{{ a.name }}</span></sc-for></div>
+   </sc-if>
+  </section>
+  <sc-if value="{{ detail.hasDocs }}">
+   <section style="display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:#13693F;color:#E5EBE8;">
+    <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Documents</h2>
+    <sc-for list="{{ detail.docs }}" as="c" hint-placeholder-count="1">
+     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+      <span style="width:28px;height:28px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-check-2.svg) center/contain no-repeat;"></span>
+      <span style="flex:1 1 200px;display:flex;flex-direction:column;"><span style="font-weight:700;">{{ c.label }}</span><span style="font-size:14px;">{{ c.ref }} · Issued {{ c.issued }}</span></span>
+      <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onDark="{{ true }}" size="sm" onClick="{{ c.view }}" hint-size="auto,40px">View document</x-import>
+     </div>
+    </sc-for>
+   </section>
+  </sc-if>
+  <section style="display:flex;flex-direction:column;gap:12px;">
+   <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Messages</h2>
+   <sc-for list="{{ detail.thread }}" as="m" hint-placeholder-count="2">
+    <sc-if value="{{ m.isSys }}"><span style="align-self:center;font-size:13px;color:var(--text-caption);">{{ m.text }} · {{ m.time }}</span></sc-if>
+    <sc-if value="{{ m.isMine }}"><div style="align-self:flex-end;max-width:85%;display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:16px;background:var(--surface-2);"><span style="font-size:13px;font-weight:700;">You · {{ m.time }}</span><span>{{ m.text }}</span></div></sc-if>
+    <sc-if value="{{ m.isOther }}"><div style="align-self:flex-start;max-width:85%;display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:16px;border:1px solid var(--border-default);"><span style="font-size:13px;font-weight:700;">{{ m.by }} · {{ m.time }}</span><span>{{ m.text }}</span></div></sc-if>
+   </sc-for>
+   <label style="display:flex;flex-direction:column;gap:6px;">
+    <span style="font-size:14px;font-weight:700;">Add a message or inquiry</span>
+    <textarea value="{{ reply }}" onChange="{{ setReply }}" rows="3" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid transparent;border-radius:8px;padding:12px 14px;resize:vertical;"></textarea>
+   </label>
+   <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onClick="{{ sendReply }}" hint-size="auto,44px">Send message</x-import></div>
+  </section>
+ </div>
+</sc-if>
+<sc-if value="{{ scr.staff_alerts }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:900px;">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;">
+   <div style="display:flex;flex-direction:column;gap:6px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">On-duty response</span>
+    <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Assist alerts</h1>
+   </div>
+   <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;"><span style="width:10px;height:10px;border-radius:50%;background:#13693F;box-shadow:0 0 0 3px rgba(19,105,63,.25);"></span>Receiving alerts</span>
+  </div>
+  <p style="margin:0;font-size:15px;color:var(--text-caption);">Each alert shows only the location and time. Resident names are not sent with Assist alerts.</p>
+  <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="2">
+   <article style="display:flex;flex-direction:column;gap:14px;padding:20px 24px;border-radius:16px;background:var(--surface-1);border:2px solid {{ a.border }};">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+     <span style="width:28px;height:28px;flex:none;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/map-pin.svg) center/contain no-repeat;"></span>
+     <div style="flex:1 1 240px;display:flex;flex-direction:column;">
+      <span style="font-size:20px;font-weight:700;">{{ a.loc }}</span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ a.id }} · {{ a.time }} · {{ a.source }}</span>
+      <sc-if value="{{ a.hasGps }}"><span style="font-size:14px;">Device location: {{ a.gps }}</span></sc-if>
+     </div>
+     <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ a.sbg }};color:{{ a.sfg }};border:1px solid {{ a.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ a.sicon }}) center/contain no-repeat;"></span>{{ a.slabel }}</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+     <sc-if value="{{ a.canAck }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" size="sm" onClick="{{ a.ack }}" hint-size="auto,40px">Acknowledge</x-import></sc-if>
+     <sc-if value="{{ a.canDispatch }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ a.dispatch }}" hint-size="auto,40px">Guard dispatched</x-import></sc-if>
+     <sc-if value="{{ a.canResolve }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ a.resolve }}" hint-size="auto,40px">Resolve</x-import></sc-if>
+     <sc-if value="{{ a.canRefer }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ a.refer }}" hint-size="auto,40px">Refer to Case Handler</x-import></sc-if>
+    </div>
+   </article>
+  </sc-for>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.staff_queue }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;">
+  <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Request queue</h1>
+  <div role="group" aria-label="Filter by status" style="display:flex;gap:8px;flex-wrap:wrap;">
+   <sc-for list="{{ queueFilters }}" as="f" hint-placeholder-count="7">
+    <button onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 14px;display:flex;align-items:center;gap:8px;border-radius:8px;font-size:14px;font-weight:700;background:{{ f.bg }};color:{{ f.fg }};border:1px solid {{ f.bd }};">{{ f.label }} <span style="font-weight:400;">{{ f.count }}</span></button>
+   </sc-for>
+  </div>
+  <sc-for list="{{ queue }}" as="t" hint-placeholder-count="6">
+   <sc-if value="{{ t.unlocked }}">
+    <button onClick="{{ t.open }}" style="all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:16px 20px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);" style-hover="background:var(--surface-2);">
+     <span style="width:24px;height:24px;flex:none;background:currentColor;mask:url({{ t.catIcon }}) center/contain no-repeat;"></span>
+     <span style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-weight:700;">{{ t.title }}</span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ t.id }} · {{ t.category }} · {{ t.unitLabel }} · {{ t.created }}</span>
+     </span>
+     <sc-if value="{{ t.needsAssist }}"><span title="Online completion requested" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/accessibility.svg) center/contain no-repeat;"></span>Online only</span></sc-if>
+     <sc-if value="{{ t.hasCase }}"><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/link.svg) center/contain no-repeat;"></span>{{ t.caseId }}</span></sc-if>
+     <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;background:{{ t.sbg }};color:{{ t.sfg }};border:1px solid {{ t.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ t.sicon }}) center/contain no-repeat;"></span>{{ t.slabel }}</span>
+    </button>
+   </sc-if>
+   <sc-if value="{{ t.locked }}">
+    <button onClick="{{ t.open }}" aria-label="Restricted report {{ t.id }}, referred to Case Handler" style="all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:16px 20px;border-radius:16px;border:1px dashed var(--border-structural);">
+     <span style="width:24px;height:24px;flex:none;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/lock.svg) center/contain no-repeat;"></span>
+     <span style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-weight:700;">Referred to Case Handler</span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ t.id }} · {{ t.created }} · Contents restricted</span>
+     </span>
+     <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:var(--surface-2);border:1px solid var(--border-default);"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/lock.svg) center/contain no-repeat;"></span>No access</span>
+    </button>
+   </sc-if>
+  </sc-for>
+  <sc-if value="{{ queueEmpty }}"><p style="margin:0;color:var(--text-caption);">No requests with this status.</p></sc-if>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.staff_ticket }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:24px;max-width:960px;">
+  <button onClick="{{ backQueue }}" style="all:unset;cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:700;">
+   <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/arrow-left.svg) center/contain no-repeat;"></span>Request queue
+  </button>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">{{ st.id }} · {{ st.kindLabel }} · {{ st.created }}</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);text-wrap:pretty;">{{ st.title }}</h1>
+   <span>{{ st.residentName }} · {{ st.unitLabel }}</span>
+  </div>
+  <ol aria-label="Status" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ st.stepCols }};gap:8px;">
+   <sc-for list="{{ st.steps }}" as="p" hint-placeholder-count="4">
+    <li style="display:flex;flex-direction:column;gap:8px;">
+     <span style="height:6px;border-radius:3px;background:{{ p.bar }};"></span>
+     <span style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:{{ p.weight }};color:{{ p.fg }};"><span style="width:16px;height:16px;flex:none;background:currentColor;mask:url({{ p.iconUrl }}) center/contain no-repeat;"></span>{{ p.label }}</span>
+    </li>
+   </sc-for>
+  </ol>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:start;">
+   <div style="display:flex;flex-direction:column;gap:20px;">
+    <section style="display:flex;flex-direction:column;gap:8px;">
+     <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Details</h2>
+     <p style="margin:0;text-wrap:pretty;">{{ st.desc }}</p>
+     <span style="font-size:14px;color:var(--text-caption);">{{ st.locationLabel }}</span>
+     <sc-if value="{{ st.needsAssist }}"><span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/accessibility.svg) center/contain no-repeat;"></span>Resident cannot easily visit the office. Complete and release online.</span></sc-if>
+     <sc-if value="{{ st.hasAttach }}"><div style="display:flex;gap:8px;flex-wrap:wrap;"><sc-for list="{{ st.attachments }}" as="a"><span style="display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--border-default);font-size:14px;"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/paperclip.svg) center/contain no-repeat;"></span>{{ a.name }}</span></sc-for></div></sc-if>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:12px;">
+     <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Inquiry thread</h2>
+     <sc-for list="{{ st.thread }}" as="m" hint-placeholder-count="2">
+      <sc-if value="{{ m.isSys }}"><span style="align-self:center;font-size:13px;color:var(--text-caption);">{{ m.text }} · {{ m.time }}</span></sc-if>
+      <sc-if value="{{ m.isMine }}"><div style="align-self:flex-end;max-width:90%;display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:16px;background:var(--surface-2);"><span style="font-size:13px;font-weight:700;">{{ m.by }} · {{ m.time }}</span><span>{{ m.text }}</span></div></sc-if>
+      <sc-if value="{{ m.isOther }}"><div style="align-self:flex-start;max-width:90%;display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-radius:16px;border:1px solid var(--border-default);"><span style="font-size:13px;font-weight:700;">{{ m.by }} · {{ m.time }}</span><span>{{ m.text }}</span></div></sc-if>
+     </sc-for>
+     <label style="display:flex;flex-direction:column;gap:6px;">
+      <span style="font-size:14px;font-weight:700;">Reply to resident</span>
+      <textarea value="{{ reply }}" onChange="{{ setReply }}" rows="3" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid transparent;border-radius:8px;padding:12px 14px;resize:vertical;"></textarea>
+     </label>
+     <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onClick="{{ sendReply }}" hint-size="auto,44px">Send reply</x-import></div>
+    </section>
+   </div>
+   <aside style="display:flex;flex-direction:column;gap:16px;">
+    <div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+     <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Status</span>
+     <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ st.sbg }};color:{{ st.sfg }};border:1px solid {{ st.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ st.sicon }}) center/contain no-repeat;"></span>{{ st.slabel }}</span>
+     <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <sc-for list="{{ st.actions }}" as="x" hint-placeholder-count="2">
+       <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="{{ x.variant }}" size="sm" onClick="{{ x.pick }}" hint-size="auto,40px">{{ x.label }}</x-import>
+      </sc-for>
+     </div>
+     <sc-if value="{{ st.canIssue }}">
+      <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid var(--border-structural);">
+       <span style="font-size:14px;">Release the document here so the resident can retrieve it without an office visit.</span>
+       <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ st.issue }}" hint-size="auto,40px">Issue document</x-import></div>
+      </div>
+     </sc-if>
+     <sc-if value="{{ st.hasDocs }}">
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid var(--border-structural);">
+       <span style="font-size:14px;font-weight:700;">Documents issued</span>
+       <sc-for list="{{ st.docs }}" as="c"><button onClick="{{ c.view }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:40px;font-size:14px;text-decoration:underline;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-check-2.svg) center/contain no-repeat;"></span>{{ c.label }} · {{ c.ref }}</button></sc-for>
+      </div>
+     </sc-if>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+     <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Automatic categorization</span>
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Select" label="Category" options="{{ catOptions }}" value="{{ st.catValue }}" onChange="{{ st.setCat }}" hint-size="100%,72px"></x-import>
+     <span style="font-size:14px;color:var(--text-caption);">{{ st.aiLine }} Choosing VAWC-Related or Child Welfare refers the report to the Case Handler and removes your access.</span>
+     <sc-if value="{{ st.hasCase }}"><span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;"><span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/link.svg) center/contain no-repeat;"></span>Linked to Case #{{ st.caseId }}</span></sc-if>
+     <sc-if value="{{ st.noCase }}"><span style="font-size:14px;">No related case file found.</span></sc-if>
+    </div>
+   </aside>
+  </div>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.staff_cases }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:900px;">
+  <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Linked case files</h1>
+  <p style="margin:0;font-size:15px;color:var(--text-caption);">Reports that ReCARES linked into a recurring pattern. Confidential case files (RA 9262, RA 7610) are held by the Case Handler and are not listed here.</p>
+  <sc-for list="{{ pattern }}" as="c" hint-placeholder-count="1">
+   <article style="display:flex;flex-direction:column;gap:16px;padding:24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+     <div style="flex:1 1 280px;display:flex;flex-direction:column;"><span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Case #{{ c.id }} · opened {{ c.opened }}</span><span style="font-size:18px;font-weight:700;">{{ c.title }}</span></div>
+     <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ c.sbg }};color:{{ c.sfg }};border:1px solid {{ c.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ c.sicon }}) center/contain no-repeat;"></span>{{ c.slabel }}</span>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+     <sc-for list="{{ c.events }}" as="e" hint-placeholder-count="3">
+      <li style="display:flex;gap:12px;align-items:flex-start;">
+       <span style="width:18px;height:18px;flex:none;margin-top:3px;background:currentColor;mask:url({{ e.iconUrl }}) center/contain no-repeat;"></span>
+       <span style="display:flex;flex-direction:column;"><span>{{ e.text }}</span><span style="font-size:13px;color:var(--text-caption);">{{ e.time }} <sc-if value="{{ e.hasRef }}">· {{ e.ref }}</sc-if> <sc-if value="{{ e.hasBy }}">· {{ e.by }}</sc-if></span></span>
+      </li>
+     </sc-for>
+    </ol>
+   </article>
+  </sc-for>
+ </div>
+</sc-if>
+<sc-if value="{{ isHandler }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;justify-content:flex-end;">
+  <button onClick="{{ togglePrivacy }}" aria-pressed="{{ privacy }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--border-default);font-size:14px;font-weight:700;">
+   <span style="width:18px;height:18px;background:currentColor;mask:url({{ privacyIcon }}) center/contain no-repeat;"></span>{{ privacyLabel }}
+  </button>
+ </div>
+</sc-if>
+<sc-if value="{{ scr.handler_cases }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;filter:{{ blur }};transition:filter 200ms ease-in-out;">
+  <div style="display:flex;flex-direction:column;gap:6px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Designated case handler · {{ openCount }} open</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Confidential case files</h1>
+   <p style="margin:0;font-size:15px;color:var(--text-caption);">Only reports classified under RA 9262 or RA 7610 appear here. Household identities stay masked until you reveal them.</p>
+  </div>
+  <sc-for list="{{ caseList }}" as="c" hint-placeholder-count="3">
+   <button onClick="{{ c.open }}" style="all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:20px 24px;border-radius:16px;background:var(--card-fill-neutral);color:var(--text-on-card-neutral);border:2px solid {{ c.border }};" style-hover="opacity:.92;">
+    <span style="width:26px;height:26px;flex:none;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/folder-lock.svg) center/contain no-repeat;"></span>
+    <span style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:2px;">
+     <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Case #{{ c.id }} · {{ c.law }}</span>
+     <span style="font-size:18px;font-weight:700;">{{ c.title }}</span>
+     <span style="font-size:14px;">{{ c.house }} · {{ c.linked }} linked · last activity {{ c.last }}</span>
+    </span>
+    <sc-if value="{{ c.isFresh }}"><span style="font-size:13px;font-weight:700;padding:2px 8px;border-radius:4px;background:#FECA09;color:#0B0B0B;">NEW LINK</span></sc-if>
+    <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ c.sbg }};color:{{ c.sfg }};border:1px solid {{ c.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ c.sicon }}) center/contain no-repeat;"></span>{{ c.slabel }}</span>
+   </button>
+  </sc-for>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.handler_case }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:24px;max-width:1000px;filter:{{ blur }};transition:filter 200ms ease-in-out;">
+  <button onClick="{{ backCases }}" style="all:unset;cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:700;">
+   <span style="width:18px;height:18px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/arrow-left.svg) center/contain no-repeat;"></span>Case files
+  </button>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;">
+   <div style="display:flex;flex-direction:column;gap:6px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Case #{{ cd.id }} · {{ cd.law }} · opened {{ cd.opened }}</span>
+    <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">{{ cd.title }}</h1>
+   </div>
+   <span style="display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:2px 12px;border-radius:8px;font-size:14px;font-weight:700;background:{{ cd.sbg }};color:{{ cd.sfg }};border:1px solid {{ cd.sbd }};"><span style="width:16px;height:16px;background:currentColor;mask:url({{ cd.sicon }}) center/contain no-repeat;"></span>{{ cd.slabel }}</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding:20px 24px;border-radius:16px;background:#13693F;color:#E5EBE8;">
+   <span style="width:24px;height:24px;flex:none;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/house.svg) center/contain no-repeat;"></span>
+   <div style="flex:1 1 240px;display:flex;flex-direction:column;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Household</span>
+    <span style="font-size:20px;font-weight:700;">{{ cd.house }}</span>
+   </div>
+   <sc-if value="{{ cd.masked }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onDark="{{ true }}" size="sm" onClick="{{ cd.reveal }}" hint-size="auto,40px">Reveal identity (logged)</x-import></sc-if>
+   <sc-if value="{{ cd.revealed }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onDark="{{ true }}" size="sm" onClick="{{ cd.hide }}" hint-size="auto,40px">Mask again</x-import></sc-if>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start;">
+   <div style="display:flex;flex-direction:column;gap:24px;">
+    <section style="display:flex;flex-direction:column;gap:12px;">
+     <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Case timeline</h2>
+     <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;">
+      <sc-for list="{{ cd.timeline }}" as="e" hint-placeholder-count="3">
+       <li style="display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--border-subtle);">
+        <span style="width:20px;height:20px;flex:none;margin-top:2px;background:currentColor;mask:url({{ e.iconUrl }}) center/contain no-repeat;"></span>
+        <span style="display:flex;flex-direction:column;gap:2px;">
+         <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">{{ e.kind }} <sc-if value="{{ e.hasRef }}">· {{ e.ref }}</sc-if></span>
+         <span>{{ e.text }}</span>
+         <span style="font-size:13px;color:var(--text-caption);">{{ e.time }} <sc-if value="{{ e.hasBy }}">· {{ e.by }}</sc-if></span>
+        </span>
+       </li>
+      </sc-for>
+     </ol>
+    </section>
+    <sc-if value="{{ cd.hasReports }}">
+     <section style="display:flex;flex-direction:column;gap:12px;">
+      <h2 style="margin:0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Linked reports</h2>
+      <sc-for list="{{ cd.reports }}" as="r" hint-placeholder-count="1">
+       <article style="display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+        <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-caption);">{{ r.id }} · {{ r.created }}</span>
+        <span style="font-weight:700;">{{ r.title }}</span>
+        <p style="margin:0;">{{ r.desc }}</p>
+        <span style="font-size:14px;color:var(--text-caption);">{{ r.reporter }}</span>
+        <sc-if value="{{ r.hasThread }}">
+         <div style="display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid var(--border-subtle);">
+          <sc-for list="{{ r.thread }}" as="m"><span style="font-size:14px;"><strong>{{ m.by }}</strong> · {{ m.time }}: {{ m.text }}</span></sc-for>
+         </div>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:6px;">
+         <span style="font-size:14px;font-weight:700;">Secure message to reporter</span>
+         <textarea value="{{ r.draft }}" onChange="{{ r.setDraft }}" rows="2" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid transparent;border-radius:8px;padding:10px 14px;resize:vertical;"></textarea>
+        </label>
+        <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ r.send }}" hint-size="auto,40px">Send securely</x-import></div>
+       </article>
+      </sc-for>
+     </section>
+    </sc-if>
+   </div>
+   <aside style="display:flex;flex-direction:column;gap:16px;">
+    <div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+     <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Handler action</span>
+     <sc-if value="{{ cd.needsClass }}">
+      <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Select" label="Classify under" placeholder="Choose classification" options="{{ cd.classOptions }}" value="" onChange="{{ cd.setClass }}" hint-size="100%,72px"></x-import>
+     </sc-if>
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Select" label="Case status" options="{{ cd.statusOptions }}" value="{{ cd.statusDraft }}" onChange="{{ cd.setStatusDraft }}" hint-size="100%,72px"></x-import>
+     <label style="display:flex;flex-direction:column;gap:6px;">
+      <span style="font-size:14px;font-weight:700;">Reason or note (optional)</span>
+      <textarea value="{{ cd.statusNote }}" onChange="{{ cd.setStatusNote }}" rows="2" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid transparent;border-radius:8px;padding:10px 14px;resize:vertical;"></textarea>
+     </label>
+     <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" size="sm" onClick="{{ cd.applyStatus }}" hint-size="auto,40px">Record decision</x-import></div>
+     <span style="font-size:14px;color:var(--text-caption);">Every decision on this case is made and recorded by you. ReCARES only sorts and links incoming reports.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+     <label style="display:flex;flex-direction:column;gap:6px;">
+      <span style="font-size:14px;font-weight:700;">Add handler note</span>
+      <textarea value="{{ cd.caseNote }}" onChange="{{ cd.setCaseNote }}" rows="3" placeholder="Procedural notes only" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid transparent;border-radius:8px;padding:10px 14px;resize:vertical;"></textarea>
+     </label>
+     <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ cd.addNote }}" hint-size="auto,40px">Add note</x-import></div>
+    </div>
+   </aside>
+  </div>
+ </div>
+</sc-if>
+<sc-if value="{{ scr.admin_verify }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;">
+  <div style="display:flex;flex-direction:column;gap:6px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">{{ pendingCount }} awaiting review</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Resident verification</h1>
+   <p style="margin:0;font-size:15px;color:var(--text-caption);">Match each registration against HOA records before activating the account.</p>
+  </div>
+  <sc-for list="{{ pending }}" as="p" hint-placeholder-count="4">
+   <article style="display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;padding:20px 24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:4px;">
+     <span style="font-size:18px;font-weight:700;">{{ p.name }}</span>
+     <span>{{ p.unit }} · {{ p.rel }}</span>
+     <span style="font-size:14px;color:var(--text-caption);">Submitted {{ p.submitted }}</span>
+     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+      <sc-for list="{{ p.docs }}" as="x"><span style="display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid var(--border-default);font-size:14px;"><span style="width:14px;height:14px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-badge.svg) center/contain no-repeat;"></span>{{ x.name }}</span></sc-for>
+     </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" size="sm" onClick="{{ p.approve }}" hint-size="auto,40px">Approve</x-import>
+     <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ p.deny }}" hint-size="auto,40px">Deny</x-import>
+    </div>
+   </article>
+  </sc-for>
+  <sc-if value="{{ noPending }}"><p style="margin:0;padding:24px;border-radius:16px;border:1px dashed var(--border-structural);">All registrations have been reviewed.</p></sc-if>
+  <h2 style="margin:16px 0 0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-section-heading);">Recently processed</h2>
+  <sc-for list="{{ processed }}" as="p" hint-placeholder-count="1">
+   <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--border-subtle);">
+    <span style="flex:1 1 260px;display:flex;flex-direction:column;"><span style="font-weight:700;">{{ p.name }}</span><span style="font-size:14px;color:var(--text-caption);">{{ p.unit }} · {{ p.time }}</span><sc-if value="{{ p.hasReason }}"><span style="font-size:14px;">Reason: {{ p.reason }}</span></sc-if></span>
+    <span style="display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:2px 10px;border-radius:8px;font-size:13px;font-weight:700;background:{{ p.sbg }};color:{{ p.sfg }};border:1px solid {{ p.sbd }};"><span style="width:14px;height:14px;background:currentColor;mask:url({{ p.sicon }}) center/contain no-repeat;"></span>{{ p.slabel }}</span>
+   </div>
+  </sc-for>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.admin_staff }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;">
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;">
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Staff accounts</h1>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ openAddStaff }}" hint-size="auto,44px">Add staff account</x-import>
+  </div>
+  <p style="margin:0;font-size:15px;color:var(--text-caption);">On-duty responders receive Assist alerts. There is no separate security account; response is a permission on HOA Staff.</p>
+  <sc-for list="{{ staffList }}" as="x" hint-placeholder-count="5">
+   <article style="display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;padding:18px 24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+    <div style="flex:1 1 240px;display:flex;flex-direction:column;"><span style="font-size:17px;font-weight:700;">{{ x.name }}</span><span style="font-size:14px;color:var(--text-caption);">{{ x.pos }} · {{ x.role }}</span></div>
+    <sc-if value="{{ x.notHandlerRole }}">
+     <button onClick="{{ x.toggleResp }}" role="switch" aria-checked="{{ x.respAria }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;font-weight:700;">
+      <span style="position:relative;width:46px;height:26px;border-radius:13px;background:{{ x.respBg }};transition:background 200ms;flex:none;"><span style="position:absolute;top:2px;left:{{ x.respKnob }};width:22px;height:22px;border-radius:50%;background:#FFFFFF;transition:left 200ms;"></span></span>{{ x.respLabel }}
+     </button>
+    </sc-if>
+    <sc-if value="{{ x.isHandlerRole }}"><span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;"><span style="width:16px;height:16px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/folder-lock.svg) center/contain no-repeat;"></span>RA 9262 / RA 7610 access</span></sc-if>
+    <button onClick="{{ x.toggleActive }}" role="switch" aria-checked="{{ x.activeAria }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;font-weight:700;min-width:140px;">
+     <span style="position:relative;width:46px;height:26px;border-radius:13px;background:{{ x.activeBg }};transition:background 200ms;flex:none;"><span style="position:absolute;top:2px;left:{{ x.activeKnob }};width:22px;height:22px;border-radius:50%;background:#FFFFFF;transition:left 200ms;"></span></span>{{ x.activeLabel }}
+    </button>
+   </article>
+  </sc-for>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.admin_report }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:28px;max-width:1000px;">
+  <div style="display:flex;flex-direction:column;gap:6px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">Monthly snapshot · {{ rMonth }}</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Aggregate complaint volume by phase, current month</h1>
+   <p style="margin:0;font-size:15px;color:var(--text-caption);text-wrap:pretty;">Compiled {{ rCompiled }} from categorized submissions. This is a retrospective count, not a live tracker. It does not rate, predict, or flag any individual household.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+   <div style="padding:24px;border-radius:16px;background:#13693F;color:#E5EBE8;display:flex;flex-direction:column;gap:4px;"><span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Total this month</span><span style="font-size:40px;font-weight:700;line-height:1.1;">{{ rTotal }}</span><span style="font-size:14px;">Routine submissions, all phases</span></div>
+   <div style="padding:24px;border-radius:16px;background:var(--card-fill-neutral);color:var(--text-on-card-neutral);display:flex;flex-direction:column;gap:4px;"><span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Confidential referrals</span><span style="font-size:40px;font-weight:700;line-height:1.1;">{{ rConf }}</span><span style="font-size:14px;">Total only. Not broken down by phase to protect households.</span></div>
+  </div>
+  <section style="display:flex;flex-direction:column;gap:14px;">
+   <h2 style="margin:0;font-size:24px;font-weight:700;color:var(--text-section-heading);">By phase</h2>
+   <div role="img" aria-label="Site plan view of complaint counts per phase" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px;border-radius:16px;border:1px solid var(--border-structural);">
+    <sc-for list="{{ phaseTiles }}" as="p" hint-placeholder-count="4">
+     <div style="display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:12px;background:var(--surface-1);min-height:150px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">{{ p.label }}</span>
+      <span style="font-size:36px;font-weight:700;line-height:1.1;">{{ p.count }}</span>
+      <span style="height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden;"><span style="display:block;height:100%;width:{{ p.pct }};background:#13693F;"></span></span>
+      <span style="font-size:14px;color:var(--text-caption);">{{ p.share }} · most common: {{ p.top }}</span>
+     </div>
+    </sc-for>
+   </div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:14px;">
+   <h2 style="margin:0;font-size:24px;font-weight:700;color:var(--text-section-heading);">By category</h2>
+   <sc-for list="{{ catBars }}" as="b" hint-placeholder-count="7">
+    <div style="display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) 40px;gap:12px;align-items:center;">
+     <span style="display:flex;align-items:center;gap:8px;font-size:15px;"><span style="width:16px;height:16px;flex:none;background:currentColor;mask:url({{ b.iconUrl }}) center/contain no-repeat;"></span>{{ b.label }}</span>
+     <span style="height:20px;border-radius:4px;background:var(--surface-2);overflow:hidden;"><span style="display:block;height:100%;width:{{ b.pct }};background:#F78021;"></span></span>
+     <span style="font-weight:700;text-align:right;">{{ b.count }}</span>
+    </div>
+   </sc-for>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:12px;">
+   <h2 style="margin:0;font-size:24px;font-weight:700;color:var(--text-section-heading);">Category × phase</h2>
+   <div style="overflow-x:auto;border:1px solid var(--border-structural);border-radius:16px;">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;min-width:520px;">
+     <thead><tr style="text-align:left;"><th style="padding:12px 16px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;">Category</th><th style="padding:12px;text-align:right;">P1</th><th style="padding:12px;text-align:right;">P2</th><th style="padding:12px;text-align:right;">P3</th><th style="padding:12px;text-align:right;">P4</th><th style="padding:12px 16px;text-align:right;">Total</th></tr></thead>
+     <tbody>
+      <sc-for list="{{ phaseRows }}" as="r" hint-placeholder-count="7">
+       <tr style="border-top:1px solid var(--border-subtle);"><td style="padding:10px 16px;">{{ r.label }}</td><td style="padding:10px 12px;text-align:right;">{{ r.p1 }}</td><td style="padding:10px 12px;text-align:right;">{{ r.p2 }}</td><td style="padding:10px 12px;text-align:right;">{{ r.p3 }}</td><td style="padding:10px 12px;text-align:right;">{{ r.p4 }}</td><td style="padding:10px 16px;text-align:right;font-weight:700;">{{ r.t }}</td></tr>
+      </sc-for>
+     </tbody>
+    </table>
+   </div>
+  </section>
+ </div>
+</sc-if>
+<sc-if value="{{ scr.sysadmin_roles }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;">
+  <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Role assignment</h1>
+  <p style="margin:0;font-size:15px;color:var(--text-caption);">For demonstration only. Presenter sign-ins keep their original roles so the walkthrough stays intact. Every change is written to the audit log.</p>
+  <div style="display:flex;flex-direction:column;border:1px solid var(--border-structural);border-radius:16px;overflow:hidden;">
+   <sc-for list="{{ users }}" as="u" hint-placeholder-count="8">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border-subtle);">
+     <div style="flex:1 1 240px;display:flex;flex-direction:column;"><span style="font-weight:700;">{{ u.name }}</span><span style="font-size:14px;color:var(--text-caption);">{{ u.username }}</span></div>
+     <label style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;">Role
+      <select value="{{ u.role }}" onChange="{{ u.setRole }}" style="font-family:var(--font-sans);font-size:16px;color:var(--text-body);background:var(--surface-2);border:1px solid var(--border-default);border-radius:8px;height:44px;padding:0 12px;min-width:180px;">
+       <option value="Resident">Resident</option><option value="HOA Staff">HOA Staff</option><option value="Case Handler">Case Handler</option><option value="HOA Admin">HOA Admin</option><option value="System Admin">System Admin</option>
+      </select>
+     </label>
+    </div>
+   </sc-for>
+  </div>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.sysadmin_config }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:800px;">
+  <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Configuration</h1>
+  <sc-for list="{{ cfgItems }}" as="c" hint-placeholder-count="2">
+   <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding:20px 24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:2px;"><span style="font-weight:700;">{{ c.label }}</span><span style="font-size:14px;color:var(--text-caption);">{{ c.desc }}</span></div>
+    <button onClick="{{ c.toggle }}" role="switch" aria-checked="{{ c.aria }}" aria-label="{{ c.label }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;font-weight:700;">
+     <span style="position:relative;width:46px;height:26px;border-radius:13px;background:{{ c.bg }};transition:background 200ms;"><span style="position:absolute;top:2px;left:{{ c.knob }};width:22px;height:22px;border-radius:50%;background:#FFFFFF;transition:left 200ms;"></span></span>{{ c.label }}
+    </button>
+   </div>
+  </sc-for>
+  <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding:20px 24px;border-radius:16px;background:var(--surface-1);border:1px solid var(--border-subtle);">
+   <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:2px;"><span style="font-weight:700;">Assist hold duration</span><span style="font-size:14px;color:var(--text-caption);">How long a resident holds the Assist control before an alert is sent. Prevents accidental taps.</span></div>
+   <div role="group" aria-label="Hold duration" style="display:flex;gap:8px;">
+    <sc-for list="{{ holdOpts }}" as="h" hint-placeholder-count="3"><button onClick="{{ h.pick }}" aria-pressed="{{ h.pressed }}" style="all:unset;cursor:pointer;min-width:56px;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:700;background:{{ h.bg }};color:{{ h.fg }};border:1px solid {{ h.bd }};">{{ h.label }}</button></sc-for>
+   </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;padding:20px 24px;border-radius:16px;border:1px dashed var(--border-structural);">
+   <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:2px;"><span style="font-weight:700;">Reset demo data</span><span style="font-size:14px;color:var(--text-caption);">Restores every sample record for a fresh walkthrough.</span></div>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ resetDemo }}" hint-size="auto,40px">Reset</x-import>
+  </div>
+ </div>
+</sc-if>
+
+<sc-if value="{{ scr.sysadmin_audit }}" hint-placeholder-val="{{ false }}">
+ <div style="display:flex;flex-direction:column;gap:20px;max-width:960px;">
+  <div style="display:flex;flex-direction:column;gap:6px;">
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-caption);">{{ auditCount }} entries this session</span>
+   <h1 style="margin:0;font-size:32px;font-weight:700;line-height:1.25;color:var(--text-headline);">Audit log</h1>
+  </div>
+  <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid var(--border-structural);border-radius:16px;overflow:hidden;">
+   <sc-for list="{{ audit }}" as="a" hint-placeholder-count="8">
+    <li style="display:flex;flex-wrap:wrap;gap:6px 16px;align-items:flex-start;padding:14px 20px;border-bottom:1px solid var(--border-subtle);">
+     <span style="width:18px;height:18px;flex:none;margin-top:3px;background:currentColor;mask:url({{ a.iconUrl }}) center/contain no-repeat;"></span>
+     <span style="flex:1 1 300px;display:flex;flex-direction:column;"><span style="font-weight:700;">{{ a.action }}</span><span style="font-size:14px;color:var(--text-caption);">{{ a.actor }} · {{ a.role }}</span></span>
+     <span style="font-size:14px;color:var(--text-caption);white-space:nowrap;">{{ a.time }}</span>
+    </li>
+   </sc-for>
+  </ol>
+ </div>
+</sc-if>
+ </main>
+</div>
+<sc-if value="{{ isResident }}" hint-placeholder-val="{{ false }}">
+ <sc-if value="{{ sosSheet }}">
+  <div role="dialog" aria-label="Alert status" style="position:fixed;left:50%;bottom:96px;transform:translateX(-50%);width:calc(100% - 32px);max-width:420px;z-index:35;background:var(--surface-3);color:var(--text-body);border:1px solid var(--surface-3-border);border-radius:16px;box-shadow:var(--shadow-modal);padding:20px;display:flex;flex-direction:column;gap:10px;">
+   <span style="font-weight:700;">{{ sosStatus }}</span>
+   <span style="font-size:14px;">Sent {{ sosTime }} · {{ sosLoc }}</span>
+   <sc-if value="{{ hasGps }}"><span style="font-size:14px;color:var(--text-caption);">Device location: {{ sosGps }}</span></sc-if>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:4px;">
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ closeSheet }}" hint-size="auto,40px">Close</x-import>
+    <sc-if value="{{ canCancelSos }}"><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" size="sm" onClick="{{ cancelSos }}" hint-size="auto,40px">Cancel alert</x-import></sc-if>
+   </div>
+  </div>
+ </sc-if>
+ <nav aria-label="Resident" style="position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--page-bg);border-top:1px solid var(--border-structural);">
+  <div style="max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));">
+   <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="3">
+    <button onClick="{{ n.go }}" aria-current="{{ n.current }}" style="all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;background:{{ n.bg }};color:{{ n.fg }};">
+     <span style="width:22px;height:22px;background:currentColor;mask:url({{ n.iconUrl }}) center/contain no-repeat;"></span>{{ n.label }}
+    </button>
+   </sc-for>
+   <button onPointerDown="{{ holdStart }}" onPointerUp="{{ holdEnd }}" onPointerLeave="{{ holdEnd }}" onPointerCancel="{{ holdEnd }}" onKeyDown="{{ holdStart }}" onKeyUp="{{ holdEnd }}" onContextMenu="{{ noMenu }}" aria-label="{{ assistLabel }}. Press and hold." style="all:unset;box-sizing:border-box;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;color:var(--text-body);touch-action:none;user-select:none;-webkit-user-select:none;">
+    <span style="width:22px;height:22px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/circle-dot.svg) center/contain no-repeat;"></span>
+    <span>{{ assistLabel }}</span>
+    <sc-if value="{{ hasAssistSub }}"><span style="font-size:11px;font-weight:400;line-height:1;">{{ assistSub }}</span></sc-if>
+    <span style="position:absolute;left:0;bottom:0;height:3px;width:{{ holdPct }};background:var(--text-body);"></span>
+   </button>
+  </div>
+ </nav>
+</sc-if>
+</sc-if>
+<sc-if value="{{ hasToasts }}">
+ <div aria-live="polite" style="position:fixed;top:84px;left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:440px;z-index:60;display:flex;flex-direction:column;gap:8px;">
+  <sc-for list="{{ toasts }}" as="t">
+   <div role="status" style="background:var(--surface-3);color:var(--text-body);border:1px solid var(--surface-3-border);border-radius:12px;box-shadow:var(--shadow-card);padding:14px 16px;font-size:15px;display:flex;gap:10px;align-items:flex-start;">
+    <span style="width:18px;height:18px;flex:none;margin-top:2px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;"></span>{{ t.text }}
+   </div>
+  </sc-for>
+ </div>
+</sc-if>
+<sc-if value="{{ mLocked }}">
+ <div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;">
+  <div role="alertdialog" aria-labelledby="lk-t" onClick="{{ noop }}" style="width:100%;max-width:520px;background:var(--surface-3);color:var(--text-body);border-radius:20px;box-shadow:var(--shadow-modal);padding:32px;display:flex;flex-direction:column;gap:14px;">
+   <span style="width:36px;height:36px;background:currentColor;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/shield-x.svg) center/contain no-repeat;"></span>
+   <h2 id="lk-t" style="margin:0;font-size:24px;font-weight:700;color:var(--text-headline);">Access restricted by design</h2>
+   <p style="margin:0;">Report <strong>{{ lockedId }}</strong> ({{ lockedDate }}) was classified as a welfare matter and referred to the designated Case Handler. HOA Staff cannot view its contents, reporter, or household.</p>
+   <p style="margin:0;font-size:14px;color:var(--text-caption);">This attempt has been recorded in the audit log.</p>
+   <div><x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ closeModal }}" hint-size="auto,44px">Understood</x-import></div>
+  </div>
+ </div>
+</sc-if>
+<sc-if value="{{ mDoc }}">
+ <div style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto;">
+  <div role="dialog" aria-label="Document" style="width:100%;max-width:560px;background:#FFFFFF;color:#13693F;border-radius:20px;box-shadow:var(--shadow-modal);padding:32px;display:flex;flex-direction:column;gap:16px;">
+   <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;"><span style="flex:1;background:#13693F;"></span><span style="flex:1;background:#2A9A63;"></span><span style="flex:1;background:#F78021;"></span><span style="flex:1;background:#FECA09;"></span></div>
+   <span style="font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Camella Homes Tibig Homeowners Association · Lipa City, Batangas</span>
+   <h2 style="margin:0;font-size:28px;font-weight:700;line-height:1.2;">{{ doc.type }}</h2>
+   <p style="margin:0;">This certifies that <strong>{{ doc.name }}</strong> is a verified resident of {{ doc.unit }}, Camella Homes Tibig.</p>
+   <p style="margin:0;">Purpose: {{ doc.purpose }}</p>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 0;border-top:1px solid #7B7170;border-bottom:1px solid #7B7170;font-size:14px;">
+    <span><strong>Reference</strong><br>{{ doc.ref }}</span><span><strong>Issued</strong><br>{{ doc.issued }}</span>
+    <span><strong>Request</strong><br>{{ doc.tid }}</span><span><strong>Signed</strong><br>Board Secretary, HOA</span>
+   </div>
+   <span style="font-size:14px;">Released digitally through ReCARES. No office visit required.</span>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <button onClick="{{ downloadDoc }}" style="all:unset;cursor:pointer;min-height:44px;padding:0 20px;border-radius:8px;background:#F78021;color:#0B0B0B;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;">Download copy</button>
+    <button onClick="{{ closeModal }}" style="all:unset;cursor:pointer;min-height:44px;padding:0 20px;border-radius:8px;border:1px solid #13693F;color:#13693F;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;">Close</button>
+   </div>
+  </div>
+ </div>
+</sc-if>
+<sc-if value="{{ mDeny }}">
+ <div style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;">
+  <div role="dialog" aria-label="Deny registration" style="width:100%;max-width:520px;background:var(--surface-3);color:var(--text-body);border-radius:20px;box-shadow:var(--shadow-modal);padding:32px;display:flex;flex-direction:column;gap:16px;">
+   <h2 style="margin:0;font-size:24px;font-weight:700;color:var(--text-headline);">Deny {{ denyName }}?</h2>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Select" label="Reason (sent to applicant)" required="{{ true }}" placeholder="Choose a reason" options="{{ denyOptions }}" value="{{ denyReason }}" onChange="{{ setDenyReason }}" hint-size="100%,72px"></x-import>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ confirmDeny }}" disabled="{{ denyDisabled }}" hint-size="auto,44px">Deny registration</x-import>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onClick="{{ closeModal }}" hint-size="auto,44px">Cancel</x-import>
+   </div>
+  </div>
+ </div>
+</sc-if>
+<sc-if value="{{ mStaff }}">
+ <div style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;">
+  <div role="dialog" aria-label="Add staff account" style="width:100%;max-width:520px;background:var(--surface-3);color:var(--text-body);border-radius:20px;box-shadow:var(--shadow-modal);padding:32px;display:flex;flex-direction:column;gap:16px;">
+   <h2 style="margin:0;font-size:24px;font-weight:700;color:var(--text-headline);">Add staff account</h2>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Full name" required="{{ true }}" value="{{ nsName }}" onChange="{{ setNsName }}" hint-size="100%,72px"></x-import>
+   <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Input" label="Position" required="{{ true }}" placeholder="e.g. Guard House, Day Shift" value="{{ nsPos }}" onChange="{{ setNsPos }}" error="{{ nsErr }}" hint-size="100%,72px"></x-import>
+   <button onClick="{{ toggleNsResp }}" role="switch" aria-checked="{{ nsResp }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;font-weight:700;">
+    <span style="position:relative;width:46px;height:26px;border-radius:13px;background:{{ nsRespBg }};flex:none;"><span style="position:absolute;top:2px;left:{{ nsRespKnob }};width:22px;height:22px;border-radius:50%;background:#FFFFFF;transition:left 200ms;"></span></span>Receives Assist alerts (on-duty responder)
+   </button>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" onClick="{{ addStaff }}" hint-size="auto,44px">Create account</x-import>
+    <x-import component-from-global-scope="CamellaHomesSurveyDesignSystem_9824d8.Button" variant="secondary" onClick="{{ closeModal }}" hint-size="auto,44px">Cancel</x-import>
+   </div>
+  </div>
+ </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;assistLabel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Assist&quot;,&quot;Contact&quot;,&quot;Help desk&quot;],&quot;default&quot;:&quot;Assist&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const I='https://unpkg.com/lucide-static@0.469.0/icons/';
+const ic=n=>I+n+'.svg';
+const KEY='recares-demo-v1';
+const DEMO=[
+ {role:'resident',user:'resident.demo',name:'Maria Santos',sub:'Phase 2, Block 4 Lot 12',roleLabel:'Resident'},
+ {role:'staff',user:'staff.demo',name:'Jonalyn Reyes',sub:'Front Desk',roleLabel:'HOA Staff'},
+ {role:'handler',user:'handler.demo',name:'Atty. Ramon Cruz',sub:'Case Handler',roleLabel:'Case Handler'},
+ {role:'admin',user:'admin.demo',name:'Board Secretary',sub:'HOA Admin',roleLabel:'HOA Admin'},
+ {role:'sysadmin',user:'sysadmin.demo',name:'IT Coordinator',sub:'System Admin',roleLabel:'System Admin'}
+];
+const NAV={
+ resident:[['home','Home','house'],['new','New','file-plus'],['mine','My submissions','list-checks']],
+ staff:[['alerts','Assist alerts','bell'],['queue','Request queue','inbox'],['cases','Linked case files','link']],
+ handler:[['cases','Case files','folder-lock']],
+ admin:[['verify','Resident verification','user-check'],['staff','Staff accounts','users'],['report','Monthly report','chart-column']],
+ sysadmin:[['roles','Role assignment','key-round'],['config','Configuration','settings'],['audit','Audit log','scroll-text']]
+};
+const EXTRA={resident:['detail'],staff:['ticket'],handler:['case'],admin:[],sysadmin:[]};
+const allowed=(r,s)=>!!NAV[r]&&(NAV[r].some(n=>n[0]===s)||EXTRA[r].includes(s));
+const MARIA={phase:2,block:4,lot:12};
+const U=(p,b,l)=>({phase:p,block:b,lot:l});
+const unitStr=u=>`Phase ${u.phase} · Block ${u.block} Lot ${u.lot}`;
+const hh=u=>`P${u.phase}-B${u.block}-L${u.lot}`;
+const hhStr=h=>{const m=h.match(/P(\d+)-B(\d+)-L(\d+)/);return m?`Phase ${m[1]} · Block ${m[2]} Lot ${m[3]}`:h};
+const hhMask=h=>{const m=h.match(/P(\d+)-B(\d+)-L(\d+)/);return m?`Phase ${m[1]} · Block •• Lot ••`:'••'};
+const d=(day,h,m,mo)=>new Date(2026,mo==null?8:mo,day,h,m).toISOString();
+const fmt=iso=>{const t=new Date(iso);return t.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+', '+t.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})};
+const pad=(n,w)=>String(n).padStart(w,'0');
+const SENS=['VAWC-Related','Child Welfare'];
+const CAT={'Maintenance Request':'wrench','Noise Complaint':'volume-2','Security Concern':'shield','Document Request':'file-text','Sanitation':'trash-2','Parking & Vehicles':'car','Facility Use':'building-2','VAWC-Related':'lock','Child Welfare':'lock','General Inquiry':'message-square','Uncategorized':'circle-help','Pending classification':'lock'};
+const STAFF_CATS=['Maintenance Request','Noise Complaint','Security Concern','Document Request','Sanitation','Parking & Vehicles','Facility Use','General Inquiry','VAWC-Related','Child Welfare'];
+const LAW={'VAWC-Related':'RA 9262','Child Welfare':'RA 7610','Pending classification':'Pending classification'};
+const SURF={bg:'var(--surface-2)',fg:'var(--text-body)',bd:'var(--border-default)'};
+const AMB={bg:'#FECA09',fg:'#0B0B0B',bd:'#FECA09'};
+const EM={bg:'#13693F',fg:'#E5EBE8',bd:'#13693F'};
+const SB={
+ 'Submitted':{bg:'transparent',fg:'var(--text-body)',bd:'var(--border-default)',icon:'circle-dashed'},
+ 'In Review':{...AMB,icon:'search'},'Confirmed':{...SURF,icon:'check'},'Resolved':{...EM,icon:'circle-check'},
+ 'Declined':{bg:'transparent',fg:'var(--text-body)',bd:'#D64545',icon:'circle-x'},
+ 'Received privately':{...SURF,icon:'lock'},
+ 'New':{...AMB,icon:'bell-ring'},'Acknowledged':{...SURF,icon:'eye'},'Guard dispatched':{...SURF,icon:'footprints'},
+ 'Referred to Case Handler':{...SURF,icon:'lock'},'Cancelled by resident':{bg:'transparent',fg:'var(--text-body)',bd:'var(--border-default)',icon:'circle-slash'},
+ 'Intake':{bg:'transparent',fg:'var(--text-body)',bd:'var(--border-default)',icon:'inbox'},'Assessment':{...AMB,icon:'clipboard-list'},
+ 'Referred — Barangay VAW Desk':{...SURF,icon:'send'},'Referred — CSWDO':{...SURF,icon:'send'},'Monitoring':{...SURF,icon:'eye'},'Closed':{...EM,icon:'circle-check'},
+ 'Approved':{...EM,icon:'circle-check'},'Denied':{bg:'transparent',fg:'var(--text-body)',bd:'#D64545',icon:'circle-x'}
+};
+const badge=s=>{const b=SB[s]||SB.Confirmed;return {slabel:s,sbg:b.bg,sfg:b.fg,sbd:b.bd,sicon:ic(b.icon)}};
+const CASE_STATUSES=['Intake','Assessment','Referred — Barangay VAW Desk','Referred — CSWDO','Monitoring','Closed'];
+const TOPICS={report:['Noise or neighbor concern','Security or perimeter','Household safety (confidential)','Sanitation or garbage','Parking or vehicles','Other concern'],request:['Documents & clearances','Maintenance & repairs','Facility use','Gate pass or access','Other request']};
+const REPORT={month:'September 2026',compiled:'28 Sep 2026, 12:00 AM',cats:[['Maintenance Request',[6,9,5,7]],['Document Request',[5,7,3,4]],['Noise Complaint',[4,3,2,5]],['Security Concern',[2,4,6,1]],['Sanitation',[2,1,3,4]],['Parking & Vehicles',[3,2,1,2]],['Facility Use',[1,2,1,0]]],confidential:4};
+function classify(topic,title,desc){
+ const t=(topic+' '+title+' '+desc).toLowerCase();
+ if(/household safety/.test(t)||/(hurt me|hit me|threaten|abuse|violence|sinaktan|takot ako|unsafe at home)/.test(t))return 'VAWC-Related';
+ if(/child welfare/.test(t)||/(child|minor|bata|anak)[^.]*(unattended|neglect|hurt|abuse|left alone)/.test(t))return 'Child Welfare';
+ if(/(perimeter|wall|fence|trespass|stranger|unfamiliar|suspicious|barbed|climb)/.test(t))return 'Security Concern';
+ if(/(noise|loud|karaoke|videoke|music|barking)/.test(t))return 'Noise Complaint';
+ if(/(certificate|clearance|document|gate pass|endorsement|permit)/.test(t))return 'Document Request';
+ if(/(drain|garbage|trash|basura|sewer|clog)/.test(t))return 'Sanitation';
+ if(/(parking|vehicle|motor|car )/.test(t))return 'Parking & Vehicles';
+ if(/(clubhouse|court|pool|facility|reservation)/.test(t))return 'Facility Use';
+ if(/(light|leak|repair|broken|pothole|pipe|water|road)/.test(t))return 'Maintenance Request';
+ return 'General Inquiry';
+}
+function seed(){
+ const T=(o)=>({attachments:[],thread:[],docs:[],caseId:null,ai:'done',sensitive:false,location:null,needsAssist:false,...o});
+ const tickets=[
+  T({id:'SR-2026-0149',kind:'request',title:'Gate pass for visiting caregiver',topic:'Gate pass or access',desc:'My caregiver visits on weekdays from 7 AM to 5 PM. I am a senior citizen and would like the gate pass issued online so I do not need to go to the office.',category:'Document Request',status:'Submitted',unit:U(1,3,14),residentId:'lorna',residentName:'Lorna Castillo',created:d(28,8,20),needsAssist:true,attachments:['Caregiver_PhilSys-ID.jpg']}),
+  T({id:'SR-2026-0147',kind:'request',title:'Clogged drainage beside the clubhouse',topic:'Maintenance & repairs',desc:'The drainage grate beside the clubhouse parking is blocked with leaves and water pools after rain.',category:'Sanitation',status:'Submitted',unit:U(4,1,20),residentId:'jun',residentName:'Jun Bautista',created:d(27,7,45),attachments:['IMG_0927_drainage.jpg']}),
+  T({id:'SR-2026-0145',kind:'request',title:'Streetlight not working at Block 4 corner',topic:'Maintenance & repairs',desc:'The streetlight at the corner of Block 4 and Sampaguita Street has been off for three nights.',category:'Maintenance Request',status:'In Review',unit:MARIA,residentId:'maria',residentName:'Maria Santos',created:d(25,19,32),thread:[{by:'Jonalyn Reyes',role:'staff',text:'Thank you, Ma’am Maria. Maintenance will inspect the fixture on Tuesday morning.',time:d(26,8,50)}]}),
+  T({id:'RP-2026-0094',kind:'report',title:'Unfamiliar persons near the east perimeter wall',topic:'Security or perimeter',desc:'Two persons were seen walking along the outside of the east perimeter wall around 9:30 PM, pausing near the Block 2 section.',category:'Security Concern',status:'In Review',unit:U(3,2,8),residentId:'ana',residentName:'Ana Lim',created:d(22,21,48),caseId:'CF-2026-009',location:'East perimeter wall, near Block 2 (Phase 3)'}),
+  T({id:'RP-2026-0097',kind:'report',title:'Minor frequently left unattended',topic:'Other concern',desc:'Reporting that a minor in a neighboring household appears to be left unattended for long periods. Requesting assessment by the designated handler.',category:'Child Welfare',sensitive:true,status:'In Review',unit:U(3,9,7),household:'P3-B9-L5',residentId:'x1',residentName:'Resident, Phase 3',created:d(21,9,40),caseId:'CF-2026-012'}),
+  T({id:'RP-2026-0091',kind:'report',title:'Late-night videoke on weekdays',topic:'Noise or neighbor concern',desc:'Videoke from a neighboring unit continues past 11 PM on weeknights. Requesting a reminder of the HOA quiet hours.',category:'Noise Complaint',status:'Confirmed',unit:U(1,7,3),residentId:'rogelio',residentName:'Rogelio Manalo',created:d(20,23,10),thread:[{by:'Jonalyn Reyes',role:'staff',text:'Confirmed. A courtesy notice on quiet hours (10 PM onward) will be delivered to the unit.',time:d(21,10,2)}]}),
+  T({id:'SR-2026-0133',kind:'request',title:'Clubhouse reservation for 30 September',topic:'Facility use',desc:'Requesting the clubhouse for a family gathering on 30 September, 4 PM to 9 PM.',category:'Facility Use',status:'Declined',unit:U(3,5,1),residentId:'paolo',residentName:'Paolo Mendoza',created:d(18,14,5),thread:[{by:'Jonalyn Reyes',role:'staff',text:'The clubhouse is reserved for the HOA general assembly on 30 September. Please choose another date and submit a new request.',time:d(18,16,30)}]}),
+  T({id:'RP-2026-0088',kind:'report',title:'Welfare concern',topic:'Household safety (confidential)',desc:'Requesting a confidential welfare check for a neighboring household. Details to be provided to the case handler on request.',category:'VAWC-Related',sensitive:true,status:'In Review',unit:U(2,4,10),household:'P2-B4-L12',residentId:'x2',residentName:'Resident, Phase 2',created:d(16,15,20),caseId:'CF-2026-014'}),
+  T({id:'SR-2026-0138',kind:'request',title:'HOA clearance for water utility application',topic:'Documents & clearances',desc:'Requesting an HOA clearance to submit to the water district for our meter transfer. I use a walker and would prefer not to visit the office.',category:'Document Request',status:'Resolved',unit:MARIA,residentId:'maria',residentName:'Maria Santos',created:d(9,10,12),needsAssist:true,attachments:['Valid-ID_Santos.jpg'],thread:[{by:'Maria Santos',role:'resident',text:'Good morning. Can this be released online? The office stairs are difficult for me.',time:d(9,10,14)},{by:'Jonalyn Reyes',role:'staff',text:'Good morning, Ma’am Maria. Yes, no office visit is needed. Your account is verified and we will release the clearance here.',time:d(9,13,40)},{by:'System',role:'system',text:'Status changed to Resolved by Jonalyn Reyes',time:d(10,9,5)},{by:'Jonalyn Reyes',role:'staff',text:'Your signed HOA clearance is attached under Documents. You may present the digital copy to the water district.',time:d(10,9,6)}],docs:[{type:'HOA Clearance',ref:'HC-2026-0311',issued:d(10,9,5),purpose:'Water utility meter transfer'}]})
+ ];
+ const cases=[
+  {id:'CF-2026-014',title:'Household welfare intake',category:'VAWC-Related',sensitive:true,household:'P2-B4-L12',status:'Intake',opened:d(16,15,21),timeline:[{time:d(16,15,21),type:'report',ref:'RP-2026-0088',text:'Report auto-categorized and linked. Case file opened.'},{time:d(17,9,30),type:'action',by:'Atty. Ramon Cruz',text:'Intake recorded. Awaiting contact from the household through a safe channel.'}]},
+  {id:'CF-2026-012',title:'Child welfare assessment',category:'Child Welfare',sensitive:true,household:'P3-B9-L5',status:'Assessment',opened:d(21,9,41),timeline:[{time:d(21,9,41),type:'report',ref:'RP-2026-0097',text:'Report auto-categorized and linked. Case file opened.'},{time:d(22,11,0),type:'action',by:'Atty. Ramon Cruz',text:'Status set to Assessment. Coordination scheduled with the City Social Welfare and Development Office (CSWDO) liaison.'}]},
+  {id:'CF-2026-006',title:'Household welfare case',category:'VAWC-Related',sensitive:true,household:'P4-B6-L2',status:'Referred — Barangay VAW Desk',opened:d(19,20,5,7),timeline:[{time:d(19,20,5,7),type:'report',ref:'RP-2026-0051',text:'Report auto-categorized and linked. Case file opened.'},{time:d(27,22,20),type:'alert',ref:'AL-2026-0031',text:'Assist alert referred by HOA Staff and linked to this household.'},{time:d(28,8,15),type:'action',by:'Atty. Ramon Cruz',text:'Status set to Referred — Barangay VAW Desk, with the consent of the household.'}]},
+  {id:'CF-2026-009',title:'Recurring perimeter concern · East wall, Phase 2–3 boundary',category:'Security Concern',sensitive:false,household:null,status:'Monitoring',opened:d(14,8,0),timeline:[{time:d(14,8,0),type:'action',by:'ReCARES categorizer',text:'Case file opened after two related perimeter reports in August (RP-2026-0062, RP-2026-0070).'},{time:d(22,21,49),type:'report',ref:'RP-2026-0094',text:'Report auto-linked: unfamiliar persons near the east perimeter wall.'},{time:d(23,9,15),type:'action',by:'Eduardo Villanueva',text:'Guard patrol on the east wall increased to hourly after 8 PM.'}]}
+ ];
+ const alerts=[
+  {id:'AL-2026-0031',unit:U(4,6,2),gps:null,time:d(27,22,14),status:'Referred to Case Handler'},
+  {id:'AL-2026-0030',unit:U(1,2,9),gps:null,time:d(24,19,40),status:'Resolved'}
+ ];
+ const pending=[
+  {id:'V1',name:'Danilo Pascual',unit:U(2,8,3),rel:'Homeowner · Senior citizen',docs:['Transfer Certificate of Title','Senior Citizen ID'],submitted:d(28,7,58)},
+  {id:'V2',name:'Rhea Villareal',unit:U(4,2,9),rel:'Tenant',docs:['Lease contract','PhilSys ID'],submitted:d(27,18,44)},
+  {id:'V3',name:'Benjamin Tolentino',unit:U(1,5,17),rel:'Household member (son of homeowner)',docs:['Barangay ID','Authorization letter'],submitted:d(27,9,3)},
+  {id:'V4',name:'Kristine Mae Garcia',unit:U(3,11,6),rel:'Homeowner',docs:['Contract to Sell','UMID'],submitted:d(26,16,20)}
+ ];
+ const processed=[{name:'Grace Samonte',unit:U(2,1,15),decision:'Approved',time:d(25,10,12),reason:''}];
+ const staff=[
+  {id:'S1',name:'Jonalyn Reyes',pos:'Front Desk',role:'HOA Staff',responder:true,active:true},
+  {id:'S2',name:'Eduardo Villanueva',pos:'Guard House Supervisor',role:'HOA Staff',responder:true,active:true},
+  {id:'S3',name:'Cristina Dela Paz',pos:'Maintenance Coordinator',role:'HOA Staff',responder:false,active:true},
+  {id:'S4',name:'Atty. Ramon Cruz',pos:'Designated Case Handler',role:'Case Handler',responder:false,active:true},
+  {id:'S5',name:'Wilfredo Ramos',pos:'Night Guard (Relief)',role:'HOA Staff',responder:true,active:false}
+ ];
+ const users=[
+  {id:'u1',name:'Maria Santos',username:'resident.demo',role:'Resident'},
+  {id:'u2',name:'Jonalyn Reyes',username:'staff.demo',role:'HOA Staff'},
+  {id:'u3',name:'Atty. Ramon Cruz',username:'handler.demo',role:'Case Handler'},
+  {id:'u4',name:'Board Secretary',username:'admin.demo',role:'HOA Admin'},
+  {id:'u5',name:'IT Coordinator',username:'sysadmin.demo',role:'System Admin'},
+  {id:'u6',name:'Eduardo Villanueva',username:'e.villanueva',role:'HOA Staff'},
+  {id:'u7',name:'Cristina Dela Paz',username:'c.delapaz',role:'HOA Staff'},
+  {id:'u8',name:'Rogelio Manalo',username:'r.manalo',role:'Resident'}
+ ];
+ const audit=[
+  {time:d(28,8,15),actor:'Atty. Ramon Cruz',role:'Case Handler',action:'Updated status on CF-2026-006'},
+  {time:d(28,7,58),actor:'ReCARES',role:'System',action:'New resident registration received (Phase 2 · Block 8 Lot 3)'},
+  {time:d(27,22,20),actor:'Jonalyn Reyes',role:'HOA Staff',action:'Referred AL-2026-0031 to Case Handler'},
+  {time:d(26,17,2),actor:'IT Coordinator',role:'System Admin',action:'Assigned role HOA Staff to c.delapaz'},
+  {time:d(25,10,12),actor:'Board Secretary',role:'HOA Admin',action:'Approved resident registration: Grace Samonte'}
+ ];
+ return {v:1,tickets,cases,alerts,pending,processed,staff,users,audit,cfg:{autoCat:true,linking:true,hold:2},seq:{sr:150,rp:98,al:32,cf:14,doc:217}};
+}
+const blankForm=(kind)=>({kind:kind||'report',topic:'',title:'',desc:'',location:'Registered unit · Phase 2, Block 4 Lot 12',attachments:[],needsAssist:false});
+const SCEN=[
+ {group:'Discreet household-safety report',desc:'A resident privately asks to speak with the designated case handler. Routed away from front-desk staff and linked to the household’s existing case file.',form:{kind:'report',topic:'Household safety (confidential)',title:'Request for a private conversation',desc:'I would like to speak privately with the designated case handler about a concern in our household. Please contact me through ReCARES messages only, not by phone.',location:'Registered unit · Phase 2, Block 4 Lot 12',attachments:[],needsAssist:false}},
+ {group:'Accessible document request',desc:'A resident whose household member uses a wheelchair requests a certificate released online, with no office visit.',form:{kind:'request',topic:'Documents & clearances',title:'Certificate of Residency for PWD ID renewal',desc:'My father is a wheelchair user and cannot go to the HOA office. Please release the Certificate of Residency digitally through ReCARES for his PWD ID renewal at City Hall.',location:'Registered unit · Phase 2, Block 4 Lot 12',attachments:['PWD-ID_Santos-R.jpg'],needsAssist:true}},
+ {group:'Perimeter-security concern',desc:'A resident near the subdivision wall reports a perimeter issue. Linked automatically to the recurring east-wall case file.',form:{kind:'report',topic:'Security or perimeter',title:'Loose barbed wire and new footholds on the perimeter wall',desc:'Behind Block 4, the barbed wire on the east perimeter wall is loose and there are new footholds on the outside of the wall. Noticed around 9 PM.',location:'East perimeter wall, behind Block 4 (Phase 2)',attachments:['IMG_0928_wall.jpg'],needsAssist:false}}
+];
+const FRIENDLY={'New':'Delivered to the guard house','Acknowledged':'Seen by the guard house','Guard dispatched':'A guard is on the way','Resolved':'Closed','Referred to Case Handler':'Seen by the guard house','Cancelled by resident':'Cancelled'};
+
+class Component extends DCLogic {
+ state=(()=>{
+  let data=null,theme='light',role=null;
+  try{data=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  if(!data||data.v!==1)data=seed();
+  try{theme=localStorage.getItem('recares-theme')||'light';role=localStorage.getItem('recares-session')||null}catch(e){}
+  if(role&&!NAV[role])role=null;
+  return {data,theme,role,screen:role?NAV[role][0][0]:null,denied:null,vw:typeof window!=='undefined'?window.innerWidth:1200,menuOpen:false,
+   lu:'',lp:'',lerr:'',form:blankForm(),ferr:{},selTicket:null,selCase:null,mineFilter:'All',queueFilter:'All',
+   reply:'',drafts:{},statusDraft:'',statusNote:'',caseNote:'',revealed:{},privacy:false,hold:0,holdHint:false,sosId:null,sosSheet:false,
+   modal:null,denyReason:'',toasts:[],ns:{name:'',pos:'',responder:false},nsErr:''};
+ })();
+ componentDidMount(){
+  this.onResize=()=>this.setState({vw:window.innerWidth});
+  this.onHash=()=>this.handleHash();
+  this.onStorage=(e)=>{if(e.key!==KEY||!e.newValue)return;try{const nd=JSON.parse(e.newValue);const before=this.state.data.alerts.filter(a=>a.status==='New').length;const after=nd.alerts.filter(a=>a.status==='New').length;this.setState({data:nd});if(this.state.role==='staff'&&after>before)this.toast('New Assist alert · '+unitStr(nd.alerts[0].unit))}catch(_){}};
+  this.onKey=(e)=>{if(e.key==='Escape'){if(this.state.modal)this.setState({modal:null});else if(this.state.menuOpen)this.setState({menuOpen:false});else if(this.state.role==='handler')this.setState(s=>({privacy:!s.privacy}))}};
+  window.addEventListener('resize',this.onResize);window.addEventListener('hashchange',this.onHash);window.addEventListener('storage',this.onStorage);window.addEventListener('keydown',this.onKey);
+  document.documentElement.setAttribute('data-theme',this.state.theme);
+  document.documentElement.style.backgroundColor=this.state.theme==='dark'?'#0b0b0b':'#e5ebe8';
+  document.body.style.background=this.state.theme==='dark'?'#0b0b0b':'#e5ebe8';
+  if(this.state.role)this.handleHash(true);
+ }
+ componentWillUnmount(){window.removeEventListener('resize',this.onResize);window.removeEventListener('hashchange',this.onHash);window.removeEventListener('storage',this.onStorage);window.removeEventListener('keydown',this.onKey);clearInterval(this.holdT)}
+ componentDidUpdate(){if(this._lt!==this.state.theme){this._lt=this.state.theme;document.documentElement.setAttribute('data-theme',this.state.theme);document.documentElement.style.backgroundColor=this.state.theme==='dark'?'#0b0b0b':'#e5ebe8';document.body.style.background=this.state.theme==='dark'?'#0b0b0b':'#e5ebe8'}}
+ setData(fn,cb){this.setState(s=>{const nd=fn(JSON.parse(JSON.stringify(s.data)));try{localStorage.setItem(KEY,JSON.stringify(nd))}catch(e){}return {data:nd}},cb)}
+ me(){return DEMO.find(x=>x.role===this.state.role)||{name:'ReCARES',roleLabel:'System'}}
+ log(d,action,actor){const m=actor||this.me();d.audit.unshift({time:new Date().toISOString(),actor:m.name,role:m.roleLabel,action});return d}
+ toast(text){const id=Math.random().toString(36).slice(2);this.setState(s=>({toasts:[...s.toasts,{id,text}]}));setTimeout(()=>this.setState(s=>({toasts:s.toasts.filter(t=>t.id!==id)})),4500)}
+ handleHash(initial){
+  const m=(location.hash||'').match(/^#\/(\w+)\/(\w+)/);const r=this.state.role;if(!r)return;
+  if(!m){if(initial)this.setHash(r,this.state.screen);return}
+  if(m[1]===r&&allowed(r,m[2])){if(m[2]!==this.state.screen||this.state.denied)this.setState({screen:m[2],denied:null})}
+  else{this.setState({denied:'/'+m[1]+'/'+m[2],menuOpen:false});this.setData(dd=>this.log(dd,'Access denied: attempted to open /'+m[1]+'/'+m[2]))}
+ }
+ setHash(r,s){try{const h='#/'+r+'/'+s;if(location.hash!==h)history.replaceState(null,'',h)}catch(e){}}
+ go(screen,extra){const r=this.state.role;if(!allowed(r,screen))return;this.setHash(r,screen);this.setState({screen,denied:null,menuOpen:false,reply:'',...(extra||{})});try{window.scrollTo(0,0)}catch(e){}}
+ login(role){const scr=NAV[role][0][0];try{localStorage.setItem('recares-session',role)}catch(e){}
+  this.setState({role,screen:scr,denied:null,menuOpen:false,lu:'',lp:'',lerr:'',selTicket:null,selCase:null,privacy:false,revealed:{},sosSheet:false,form:blankForm(),ferr:{}},()=>{this.setHash(role,scr);this.setData(dd=>this.log(dd,'Signed in'))})}
+ logout(){try{localStorage.removeItem('recares-session');history.replaceState(null,'',location.pathname+location.search)}catch(e){}this.setState({role:null,screen:null,denied:null,menuOpen:false})}
+ manualLogin(){const a=DEMO.find(x=>x.user===this.state.lu.trim().toLowerCase());if(!a||this.state.lp!=='demo1234'){this.setState({lerr:'The username or password is incorrect. Check the demo accounts panel for valid credentials.'});return}this.login(a.role)}
+ linkTicket(dd,t){
+  const cat=t.category;const house=t.household||hh(t.unit);const now=new Date().toISOString();
+  if(SENS.includes(cat)){
+   let c=dd.cfg.linking?dd.cases.find(c=>c.sensitive&&c.household===house&&c.status!=='Closed'):null;
+   if(!c){c={id:'CF-2026-'+pad(++dd.seq.cf,3),title:cat==='Child Welfare'?'Child welfare assessment':'Household welfare intake',category:cat,sensitive:true,household:house,status:'Intake',opened:now,timeline:[]};dd.cases.unshift(c);c.timeline.push({time:now,type:'report',ref:t.id,text:'Report auto-categorized. New case file opened.'})}
+   else c.timeline.push({time:now,type:'report',ref:t.id,text:'Report auto-categorized and linked to this household’s existing case file.'});
+   c.fresh=true;t.caseId=c.id;t.linkedExisting=c.timeline.length>1;return c;
+  }
+  if(dd.cfg.linking&&cat==='Security Concern'&&/(perimeter|wall|fence)/i.test(t.title+' '+t.desc+' '+(t.location||''))){
+   const c=dd.cases.find(c=>c.id==='CF-2026-009');if(c){c.timeline.push({time:now,type:'report',ref:t.id,text:'Report auto-linked: matches recurring perimeter pattern.'});c.fresh=true;t.caseId=c.id;t.linkedExisting=true;return c}
+  }
+  return null;
+ }
+ runAI(id){this.setData(dd=>{const t=dd.tickets.find(x=>x.id===id);if(!t)return dd;t.category=classify(t.topic,t.title,t.desc);t.sensitive=SENS.includes(t.category);t.ai='done';
+  const bot={name:'ReCARES categorizer',roleLabel:'System'};this.log(dd,'Auto-categorized '+t.id+' as '+(t.sensitive?'confidential (restricted)':t.category),bot);
+  const c=this.linkTicket(dd,t);if(c)this.log(dd,'Linked '+t.id+' to '+c.id,bot);return dd})}
+ submit(){
+  const f=this.state.form;const e={};
+  if(!f.topic)e.topic='Choose a topic.';if(f.title.trim().length<4)e.title='This field is required.';if(f.desc.trim().length<10)e.desc='Please describe the concern in a sentence or two.';
+  if(Object.keys(e).length){this.setState({ferr:e});return}
+  let newId;
+  this.setData(dd=>{const kind=f.kind;newId=(kind==='report'?'RP-2026-':'SR-2026-')+pad(kind==='report'?++dd.seq.rp:++dd.seq.sr,4);
+   dd.tickets.unshift({id:newId,kind,title:f.title.trim(),topic:f.topic,desc:f.desc.trim(),category:dd.cfg.autoCat?'Uncategorized':'Uncategorized',status:'Submitted',unit:MARIA,residentId:'maria',residentName:'Maria Santos',created:new Date().toISOString(),caseId:null,ai:dd.cfg.autoCat?'running':'off',sensitive:false,location:f.location,needsAssist:f.needsAssist,attachments:f.attachments.slice(),thread:[],docs:[]});
+   this.log(dd,'Submitted '+newId);return dd},()=>{
+   this.go('detail',{selTicket:newId,form:blankForm(),ferr:{}});
+   if(this.state.data.cfg.autoCat)setTimeout(()=>this.runAI(newId),1800);
+   this.toast('Submitted as '+newId+'. You can follow its status here.');
+  });
+ }
+ addReply(id,text,asRole){if(!text.trim())return;const m=this.me();this.setData(dd=>{const t=dd.tickets.find(x=>x.id===id);t.thread.push({by:m.name,role:asRole,text:text.trim(),time:new Date().toISOString()});return dd})}
+ docType(t){const s=t.title.toLowerCase();if(/residen/.test(s))return['Certificate of Residency','CR'];if(/gate pass/.test(s))return['Gate Pass','GP'];if(/clearance/.test(s))return['HOA Clearance','HC'];return['Transaction Record','TR']}
+ issueDoc(dd,t){const [type,p]=this.docType(t);const ref=p+'-2026-'+pad(++dd.seq.doc,4);t.docs.push({type,ref,issued:new Date().toISOString(),purpose:t.title});t.thread.push({by:this.me().name,role:'staff',text:type+' '+ref+' has been issued and is available under Documents. No office visit is needed.',time:new Date().toISOString()});this.log(dd,'Issued '+type+' '+ref+' on '+t.id)}
+ setStatus(id,st){const m=this.me();this.setData(dd=>{const t=dd.tickets.find(x=>x.id===id);t.status=st;t.thread.push({by:'System',role:'system',text:'Status changed to '+st+' by '+m.name,time:new Date().toISOString()});
+  if(st==='Resolved'&&t.category==='Document Request'&&!t.docs.length)this.issueDoc(dd,t);this.log(dd,'Set '+id+' to '+st);return dd});this.toast(id+' marked '+st+'.')}
+ setCategory(id,cat){this.setData(dd=>{const t=dd.tickets.find(x=>x.id===id);const old=t.category;t.category=cat;t.ai='done';this.log(dd,'Reassigned '+id+' from '+old+' to '+cat);
+  if(SENS.includes(cat)){t.sensitive=true;const c=this.linkTicket(dd,t);this.log(dd,'Referred '+id+' to Case Handler ('+c.id+')')}return dd});
+  if(SENS.includes(cat)){this.toast(id+' referred to the Case Handler. It is now restricted.');this.go('queue')}else this.toast('Category updated to '+cat+'.')}
+ setAlert(id,st){this.setData(dd=>{const a=dd.alerts.find(x=>x.id===id);a.status=st;
+  if(st==='Referred to Case Handler'){const house=hh(a.unit);let c=dd.cases.find(c=>c.sensitive&&c.household===house&&c.status!=='Closed');
+   if(!c){c={id:'CF-2026-'+pad(++dd.seq.cf,3),title:'Assist alert referral',category:'Pending classification',sensitive:true,household:house,status:'Intake',opened:new Date().toISOString(),timeline:[]};dd.cases.unshift(c)}
+   c.timeline.push({time:new Date().toISOString(),type:'alert',ref:id,text:'Assist alert referred by HOA Staff and linked to this household.'});c.fresh=true;a.caseId=c.id}
+  this.log(dd,(st==='Referred to Case Handler'?'Referred ':'Set ')+id+(st==='Referred to Case Handler'?' to Case Handler':' to '+st));return dd});
+  this.toast(st==='Referred to Case Handler'?id+' referred. Details are now restricted to the Case Handler.':id+' · '+st)}
+ holdStart(e){
+  if(e&&e.type==='keydown'){if(e.key!=='Enter'&&e.key!==' ')return;e.preventDefault();if(e.repeat)return}
+  if(this.state.sosId){this.setState({sosSheet:!this.state.sosSheet});return}
+  if(this.holdT)return;const dur=(this.state.data.cfg.hold||2)*1000,t0=Date.now();
+  this.holdT=setInterval(()=>{const p=Math.min(1,(Date.now()-t0)/dur);this.setState({hold:p});if(p>=1){clearInterval(this.holdT);this.holdT=null;this.setState({hold:0});this.sendSOS()}},40);
+ }
+ holdEnd(){if(!this.holdT)return;clearInterval(this.holdT);this.holdT=null;const short=this.state.hold<1;this.setState({hold:0,holdHint:short});if(short){clearTimeout(this.hintT);this.hintT=setTimeout(()=>this.setState({holdHint:false}),2200)}}
+ sendSOS(){
+  let fired=false;
+  const done=(gps)=>{if(fired)return;fired=true;let id;this.setData(dd=>{id='AL-2026-'+pad(++dd.seq.al,4);dd.alerts.unshift({id,unit:MARIA,gps,time:new Date().toISOString(),status:'New'});this.log(dd,'Assist alert '+id+' received from '+unitStr(MARIA),{name:'ReCARES',roleLabel:'System'});return dd},()=>this.setState({sosId:id,sosSheet:false}));
+   this.toast('Received. The guard house has your location. Stay where you feel safe.')};
+  setTimeout(()=>done(null),2500);
+  try{navigator.geolocation.getCurrentPosition(p=>done(p.coords.latitude.toFixed(5)+', '+p.coords.longitude.toFixed(5)+' (±'+Math.round(p.coords.accuracy)+' m)'),()=>done(null),{timeout:2400,maximumAge:60000})}catch(_){done(null)}
+ }
+ renderVals(){
+  const s=this.state,D=s.data,role=s.role,me=this.me();
+  const isNarrow=s.vw<860,dark=s.theme==='dark';
+  const tv=(t,viewer)=>{
+   const resV=viewer==='resident',sens=t.sensitive,run=t.ai==='running';
+   const c=t.caseId?D.cases.find(x=>x.id===t.caseId):null;
+   const stLabel=resV&&sens&&t.status!=='Resolved'?'Received privately':t.status;
+   const category=run?'Categorizing…':(resV&&sens?'Confidential':t.category);
+   const steps=(t.status==='Declined'?['Submitted','In Review','Declined']:['Submitted','In Review','Confirmed','Resolved']);
+   const cur=steps.indexOf(t.status);
+   return {id:t.id,title:t.title,kindLabel:t.kind==='report'?'Concern report':'Service request',created:fmt(t.created),category,catIcon:ic(run?'loader':(resV&&sens?'lock':(CAT[t.category]||'circle-help'))),
+    isRunning:run,notRunning:!run,aiOff:t.ai==='off',residentName:t.residentName,unitLabel:unitStr(t.unit),locationLabel:t.location||('Registered unit · '+unitStr(t.unit)),desc:t.desc,topic:t.topic,
+    hasCase:!!c&&!(resV&&sens),noCase:!c&&!run&&t.ai!=='off'&&!(resV&&sens),caseId:c?c.id:'',caseTitle:c?c.title:'',linkVerb:t.linkedExisting?'Linked to existing case file':'New case file opened',
+    sensNote:resV&&sens&&!run,needsAssist:!!t.needsAssist,...badge(stLabel),
+    aiLine:run?'Reading the report and assigning a category…':(t.ai==='off'?'Automatic categorization is off. Awaiting staff review.':'Assigned automatically on submission'+(viewer==='staff'?'. Staff may reassign.':'.')),
+    attachments:(t.attachments||[]).map(a=>({name:a})),hasAttach:(t.attachments||[]).length>0,
+    docs:t.docs.map(doc=>({label:doc.type,ref:doc.ref,issued:fmt(doc.issued),view:()=>this.setState({modal:{type:'doc',tid:t.id,ref:doc.ref}})})),hasDocs:t.docs.length>0,
+    thread:t.thread.map((m,i)=>({key:i,by:m.by,text:m.text,time:fmt(m.time),isSys:m.role==='system',isMine:m.role!=='system'&&(resV?m.role==='resident':m.role!=='resident'),isOther:m.role!=='system'&&(resV?m.role!=='resident':m.role==='resident')})),
+    hasThread:t.thread.length>0,
+    steps:steps.map((l,i)=>{const done=i<cur||(i===cur&&(l==='Resolved'));const now=i===cur&&!done;const dec=l==='Declined'&&now;
+     return {label:l,bar:dec?'#D64545':(done?'#13693F':(now?'#FECA09':'var(--border-subtle)')),fg:(done||now)?'var(--text-body)':'var(--text-caption)',weight:now?'700':'400',iconUrl:ic(dec?'circle-x':(done?'circle-check':(now?'circle-dot':'circle')))}}),
+    stepCols:'repeat('+steps.length+',minmax(0,1fr))',showSteps:!(resV&&sens),
+    open:()=>{if(viewer==='resident')this.go('detail',{selTicket:t.id});else if(viewer==='staff'){if(sens)this.openLocked(t);else this.go('ticket',{selTicket:t.id})}},
+    locked:viewer==='staff'&&sens,unlocked:!(viewer==='staff'&&sens)};
+  };
+  let screen=s.screen;
+  const selT=D.tickets.find(t=>t.id===s.selTicket);
+  if(role==='resident'&&screen==='detail'&&!selT)screen='mine';
+  if(role==='staff'&&screen==='ticket'&&(!selT||selT.sensitive))screen='queue';
+  const selC=D.cases.find(c=>c.id===s.selCase&&c.sensitive);
+  if(role==='handler'&&screen==='case'&&!selC)screen='cases';
+  const scr={};if(role&&!s.denied)scr[role+'_'+screen]=true;
+  const WORD_CHROME=['#E5EBE8','#E5EBE8','#3DB579','#F78021','#F78021','#FECA09','#E5EBE8'];
+  const WORD_PAGE=['#13693F','#13693F','#3DB579','#F78021','#F78021','#C2600F','#13693F'];
+  const counts={alerts:D.alerts.filter(a=>a.status==='New').length,queue:D.tickets.filter(t=>!t.sensitive&&t.status==='Submitted').length,cases:role==='handler'?D.cases.filter(c=>c.sensitive&&c.status!=='Closed').length:0,verify:D.pending.length};
+  const activeNav=screen==='detail'?'mine':screen==='ticket'?'queue':screen==='case'?'cases':screen;
+  const navItems=role?NAV[role].map(([k,l,i])=>{const a=!s.denied&&activeNav===k;return {key:k,label:l,iconUrl:ic(i),go:()=>this.go(k),current:a?'page':undefined,bg:a?'#FECA09':'transparent',fg:a?'#0B0B0B':'var(--text-body)',count:counts[k]||0,hasCount:(counts[k]||0)>0}}):[];
+  const base={
+   theme:s.theme,isLogin:!role,isApp:!!role,isResident:role==='resident',isSide:!!role&&role!=='resident',isHandler:role==='handler',notHandler:role!=='handler',
+   isNarrow,isWide:!isNarrow,sideWide:!!role&&role!=='resident'&&!isNarrow,sideNarrow:!!role&&role!=='resident'&&isNarrow,
+   themeLabel:dark?'Light mode':'Dark mode',themeIcon:ic(dark?'sun':'moon'),toggleTheme:()=>{const t=dark?'light':'dark';try{localStorage.setItem('recares-theme',t)}catch(e){}this.setState({theme:t})},
+   wordPage:'ReCARES'.split('').map((ch,i)=>({ch,color:WORD_PAGE[i]})),
+   wordChrome:'ReCARES'.split('').map((ch,i)=>({ch,color:WORD_CHROME[i]})),
+   headerBg:'#13693F',headerFg:'#E5EBE8',headerBd:'#13693F',
+   roleLabel:me.roleLabel,userName:me.name,userSub:me.sub||'',
+   menuOpen:s.menuOpen,toggleMenu:()=>this.setState({menuOpen:!s.menuOpen}),
+   roleOptions:DEMO.map(a=>({label:a.roleLabel,name:a.name,active:a.role===role,bg:a.role===role?'#FECA09':'transparent',fg:a.role===role?'#0B0B0B':'var(--text-body)',pick:()=>this.login(a.role)})),
+   exitDemo:()=>this.logout(),
+   tryBoundary:()=>{this.setState({menuOpen:false});location.hash=role==='handler'?'#/admin/report':'#/handler/cases'},
+   boundaryLabel:role==='handler'?'Try opening the HOA Admin report':'Try opening Case Handler files',
+   navItems,scr,denied:!!s.denied,deniedPath:s.denied||'',deniedBack:()=>this.go(NAV[role][0][0]),
+   toasts:s.toasts.map(t=>({key:t.id,text:t.text})),hasToasts:s.toasts.length>0,
+   lu:s.lu,lp:s.lp,setLu:e=>this.setState({lu:e.target.value,lerr:''}),setLp:e=>this.setState({lp:e.target.value,lerr:''}),doLogin:()=>this.manualLogin(),
+   loginKey:e=>{if(e.key==='Enter')this.manualLogin()},lerr:s.lerr,hasLerr:!!s.lerr,
+   demoAccounts:DEMO.map(a=>({label:a.roleLabel,user:a.user,name:a.name,sub:a.sub,pick:()=>this.login(a.role)})),
+   resetDemo:()=>{const nd=seed();try{localStorage.setItem(KEY,JSON.stringify(nd))}catch(e){}this.setState({data:nd,sosId:null,sosSheet:false,selTicket:null,selCase:null,revealed:{}});this.toast('Demo data reset to the original sample records.')},
+   closeModal:()=>this.setState({modal:null}),noop:e=>e.stopPropagation()
+  };
+  const modal=s.modal||{};
+  base.mLocked=modal.type==='locked';base.mDoc=modal.type==='doc';base.mDeny=modal.type==='deny';base.mStaff=modal.type==='staff';
+  base.lockedId=modal.id||'';base.lockedDate=modal.date||'';
+  if(modal.type==='doc'){const t=D.tickets.find(x=>x.id===modal.tid);const doc=t&&t.docs.find(x=>x.ref===modal.ref);
+   if(doc){base.doc={type:doc.type,ref:doc.ref,issued:fmt(doc.issued),name:t.residentName.toUpperCase(),unit:unitStr(t.unit),purpose:doc.purpose,tid:t.id};
+    base.downloadDoc=()=>{const html='<html><head><meta charset="utf-8"><title>'+doc.ref+'</title></head><body style="font-family:sans-serif;max-width:640px;margin:48px auto;line-height:1.6"><p>Camella Homes Tibig Homeowners Association · Lipa City, Batangas</p><h1>'+doc.type+'</h1><p>This certifies that <b>'+t.residentName+'</b> is a verified resident of '+unitStr(t.unit)+', Camella Homes Tibig.</p><p>Purpose: '+doc.purpose+'</p><p>Reference: '+doc.ref+' · Issued '+fmt(doc.issued)+' via ReCARES (request '+t.id+')</p><p>Board Secretary, HOA</p></bo'+'dy></ht'+'ml>';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));a.download=doc.ref+'.html';a.click()}}}
+  if(role==='resident')Object.assign(base,this.resVals(s,D,tv,selT));
+  if(role==='staff')Object.assign(base,this.staffVals(s,D,tv,selT));
+  if(role==='handler')Object.assign(base,this.handlerVals(s,D,selC));
+  if(role==='admin')Object.assign(base,this.adminVals(s,D));
+  if(role==='sysadmin')Object.assign(base,this.sysVals(s,D));
+  return base;
+ }
+ openLocked(t){this.setState({modal:{type:'locked',id:t.id,date:fmt(t.created)}});this.setData(dd=>this.log(dd,'Access denied: attempted to open restricted report '+t.id))}
+ resVals(s,D,tv,selT){
+  const mine=D.tickets.filter(t=>t.residentId==='maria');
+  const active=mine.filter(t=>!['Resolved','Declined'].includes(t.status));
+  const F={All:()=>true,Active:t=>!['Resolved','Declined'].includes(t.status),Resolved:t=>t.status==='Resolved',Declined:t=>t.status==='Declined'};
+  const f=s.form;const al=s.sosId?D.alerts.find(a=>a.id===s.sosId):null;
+  const hr=new Date().getHours();
+  return {
+   greeting:(hr<12?'Good morning':hr<18?'Good afternoon':'Good evening')+', Maria',activeCount:active.length,activeLabel:active.length===1?'1 active submission':active.length+' active submissions',
+   recent:mine.slice(0,3).map(t=>tv(t,'resident')),hasRecent:mine.length>0,
+   mineFilters:Object.keys(F).map(k=>({label:k,count:mine.filter(F[k]).length,bg:s.mineFilter===k?'#FECA09':'transparent',fg:s.mineFilter===k?'#0B0B0B':'var(--text-body)',bd:s.mineFilter===k?'#FECA09':'var(--border-default)',pressed:s.mineFilter===k?'true':'false',pick:()=>this.setState({mineFilter:k})})),
+   mineList:mine.filter(F[s.mineFilter]).map(t=>tv(t,'resident')),mineEmpty:mine.filter(F[s.mineFilter]).length===0,
+   goNew:()=>this.go('new',{form:blankForm('report'),ferr:{}}),goNewRequest:()=>this.go('new',{form:blankForm('request'),ferr:{}}),goMine:()=>this.go('mine'),goHome:()=>this.go('home'),
+   scenarios:SCEN.map((c,i)=>({num:'0'+(i+1),group:c.group,desc:c.desc,load:()=>{this.go('new',{form:JSON.parse(JSON.stringify(c.form)),ferr:{}});this.toast('Scenario loaded. Review the form, then submit.')}})),
+   isReport:f.kind==='report',isRequest:f.kind==='request',
+   kindReportBg:f.kind==='report'?'#FECA09':'transparent',kindReportFg:f.kind==='report'?'#0B0B0B':'var(--text-body)',kindReqBg:f.kind==='request'?'#FECA09':'transparent',kindReqFg:f.kind==='request'?'#0B0B0B':'var(--text-body)',
+   kindReportPressed:f.kind==='report'?'true':'false',kindReqPressed:f.kind==='request'?'true':'false',
+   setKindReport:()=>this.setState({form:{...f,kind:'report',topic:''}}),setKindRequest:()=>this.setState({form:{...f,kind:'request',topic:''}}),
+   topicOptions:TOPICS[f.kind],fTopic:f.topic,fTitle:f.title,fDesc:f.desc,fLoc:f.location,
+   setTopic:e=>this.setState({form:{...f,topic:e.target.value},ferr:{...s.ferr,topic:null}}),setTitle:e=>this.setState({form:{...f,title:e.target.value},ferr:{...s.ferr,title:null}}),
+   setDesc:e=>this.setState({form:{...f,desc:e.target.value},ferr:{...s.ferr,desc:null}}),setLoc:e=>this.setState({form:{...f,location:e.target.value}}),
+   errTopic:s.ferr.topic||null,errTitle:s.ferr.title||null,errDesc:s.ferr.desc||null,hasErrDesc:!!s.ferr.desc,hasErrTopic:!!s.ferr.topic,descBorder:s.ferr.desc?'#D64545':'transparent',
+   isConfidentialTopic:f.topic==='Household safety (confidential)',
+   fAttach:f.attachments.map((a,i)=>({name:a,remove:()=>this.setState({form:{...f,attachments:f.attachments.filter((_,j)=>j!==i)}})})),hasAttach:f.attachments.length>0,
+   addAttach:()=>{const n=new Date();const name=(f.kind==='report'?'IMG_':'DOC_')+pad(n.getMonth()+1,2)+pad(n.getDate(),2)+'_'+pad(n.getHours(),2)+pad(n.getMinutes(),2)+pad(n.getSeconds(),2)+(f.kind==='report'?'.jpg':'.pdf');this.setState({form:{...f,attachments:[...f.attachments,name]}})},
+   assistOn:f.needsAssist?'true':'false',assistBg:f.needsAssist?'#FECA09':'transparent',assistBd:f.needsAssist?'#FECA09':'var(--border-default)',assistFg:f.needsAssist?'#0B0B0B':'transparent',
+   toggleAssist:()=>this.setState({form:{...f,needsAssist:!f.needsAssist}}),
+   submitForm:()=>this.submit(),cancelForm:()=>this.go('home'),
+   detail:selT?tv(selT,'resident'):null,
+   reply:s.reply,setReply:e=>this.setState({reply:e.target.value}),sendReply:()=>{this.addReply(s.selTicket,s.reply,'resident');this.setState({reply:''})},
+   holdStart:e=>this.holdStart(e),holdEnd:()=>this.holdEnd(),noMenu:e=>e.preventDefault(),holdPct:Math.round(s.hold*100)+'%',holding:s.hold>0,
+   assistLabel:(this.props.assistLabel??'Assist'),assistSub:s.sosId?'Sent':(s.holdHint?'Hold '+(D.cfg.hold||2)+' s':''),hasAssistSub:!!s.sosId||s.holdHint,
+   sosSheet:s.sosSheet&&!!al,sosTime:al?fmt(al.time):'',sosStatus:al?(FRIENDLY[al.status]||al.status):'',sosLoc:unitStr(MARIA),sosGps:al&&al.gps?al.gps:'',hasGps:!!(al&&al.gps),
+   closeSheet:()=>this.setState({sosSheet:false}),
+   cancelSos:()=>{const id=s.sosId;this.setData(dd=>{const a=dd.alerts.find(x=>x.id===id);if(a&&a.status!=='Resolved')a.status='Cancelled by resident';this.log(dd,'Cancelled Assist alert '+id);return dd});this.setState({sosId:null,sosSheet:false});this.toast('Alert cancelled.')},
+   canCancelSos:!!al&&!['Resolved','Cancelled by resident'].includes(al.status),
+   sosDone:()=>this.setState({sosId:null,sosSheet:false})
+  };
+ }
+ staffVals(s,D,tv,selT){
+  const list=D.tickets.slice().sort((a,b)=>b.created.localeCompare(a.created));
+  const FS=['All','Submitted','In Review','Confirmed','Resolved','Declined','Referred'];
+  const match=(t,k)=>k==='All'||(k==='Referred'?t.sensitive:(!t.sensitive&&t.status===k));
+  const alerts=D.alerts.map(a=>({id:a.id,loc:unitStr(a.unit),time:fmt(a.time),gps:a.gps||'',hasGps:!!a.gps,source:a.gps?'Registered unit + device location':'Registered unit',isNew:a.status==='New',...badge(a.status),
+   border:a.status==='New'?'#FECA09':'var(--border-subtle)',
+   canAck:a.status==='New',canDispatch:['New','Acknowledged'].includes(a.status),canResolve:['New','Acknowledged','Guard dispatched'].includes(a.status),canRefer:['New','Acknowledged','Guard dispatched'].includes(a.status),
+   ack:()=>this.setAlert(a.id,'Acknowledged'),dispatch:()=>this.setAlert(a.id,'Guard dispatched'),resolve:()=>this.setAlert(a.id,'Resolved'),refer:()=>this.setAlert(a.id,'Referred to Case Handler')}));
+  let st=null;
+  if(selT&&!selT.sensitive){st=tv(selT,'staff');
+   const nx={'Submitted':[['In Review',1],['Declined',0]],'In Review':[['Confirmed',1],['Declined',0]],'Confirmed':[['Resolved',1]],'Resolved':[['In Review',0]],'Declined':[['In Review',0]]}[selT.status]||[];
+   st.actions=nx.map(([l,p])=>({label:l==='In Review'&&['Resolved','Declined'].includes(selT.status)?'Reopen':(l==='In Review'?'Start review':l==='Confirmed'?'Confirm':l==='Declined'?'Decline':'Mark resolved'),variant:p?'primary':'secondary',pick:()=>this.setStatus(selT.id,l)}));
+   st.canIssue=selT.category==='Document Request'&&!selT.docs.length&&selT.status!=='Declined';
+   st.issue=()=>{this.setData(dd=>{this.issueDoc(dd,dd.tickets.find(x=>x.id===selT.id));return dd});this.toast('Document issued to '+selT.residentName+'.')};
+   st.catValue=selT.category;st.setCat=e=>this.setCategory(selT.id,e.target.value);
+  }
+  const pattern=D.cases.filter(c=>!c.sensitive).map(c=>({id:c.id,title:c.title,status:c.status,...badge(c.status),opened:fmt(c.opened),events:c.timeline.slice().reverse().map((e,i)=>({key:i,time:fmt(e.time),text:e.text,ref:e.ref||'',hasRef:!!e.ref,by:e.by||'',hasBy:!!e.by,iconUrl:ic(e.type==='report'?'file-text':'clipboard-check')})),count:c.timeline.filter(e=>e.type==='report').length+2}));
+  return {
+   alerts,newAlerts:D.alerts.filter(a=>a.status==='New').length,hasNewAlerts:D.alerts.some(a=>a.status==='New'),
+   queueFilters:FS.map(k=>{const on=s.queueFilter===k;return {label:k,count:list.filter(t=>match(t,k)).length,bg:on?'#FECA09':'transparent',fg:on?'#0B0B0B':'var(--text-body)',bd:on?'#FECA09':'var(--border-default)',pressed:on?'true':'false',pick:()=>this.setState({queueFilter:k})}}),
+   queue:list.filter(t=>match(t,s.queueFilter)).map(t=>tv(t,'staff')),queueEmpty:list.filter(t=>match(t,s.queueFilter)).length===0,
+   st,catOptions:STAFF_CATS,backQueue:()=>this.go('queue'),
+   reply:s.reply,setReply:e=>this.setState({reply:e.target.value}),sendReply:()=>{this.addReply(s.selTicket,s.reply,'staff');this.setState({reply:''});this.toast('Reply sent to the resident.')},
+   pattern
+  };
+ }
+ handlerVals(s,D,selC){
+  const cases=D.cases.filter(c=>c.sensitive).sort((a,b)=>(b.timeline[b.timeline.length-1].time).localeCompare(a.timeline[a.timeline.length-1].time));
+  const house=c=>s.revealed[c.id]?hhStr(c.household):hhMask(c.household);
+  const caseList=cases.map(c=>({id:c.id,title:c.title,law:LAW[c.category]||c.category,house:house(c),...badge(c.status),last:fmt(c.timeline[c.timeline.length-1].time),linked:c.timeline.filter(e=>e.type==='report'||e.type==='alert').length,isFresh:!!c.fresh,border:c.fresh?'#FECA09':'var(--border-subtle)',
+   open:()=>{this.go('case',{selCase:c.id,statusDraft:c.status,statusNote:'',caseNote:''});if(c.fresh)this.setData(dd=>{dd.cases.find(x=>x.id===c.id).fresh=false;return dd})}}));
+  let cd=null;
+  if(selC){const c=selC;const rev=!!s.revealed[c.id];
+   const reports=c.timeline.filter(e=>e.type==='report').map(e=>D.tickets.find(t=>t.id===e.ref)).filter(Boolean);
+   cd={id:c.id,title:c.title,law:LAW[c.category]||c.category,category:c.category,house:house(c),revealed:rev,masked:!rev,opened:fmt(c.opened),...badge(c.status),
+    reveal:()=>{this.setState({revealed:{...s.revealed,[c.id]:true}});this.setData(dd=>this.log(dd,'Revealed household identity on '+c.id))},
+    hide:()=>this.setState({revealed:{...s.revealed,[c.id]:false}}),
+    timeline:c.timeline.slice().reverse().map((e,i)=>({key:i,time:fmt(e.time),text:e.text,ref:e.ref||'',hasRef:!!e.ref,by:e.by||'',hasBy:!!e.by,kind:e.type==='report'?'Linked report':e.type==='alert'?'Assist alert':e.type==='note'?'Handler note':'Action',iconUrl:ic(e.type==='report'?'file-text':e.type==='alert'?'bell':e.type==='note'?'notebook-pen':'clipboard-check')})),
+    reports:reports.map(t=>({id:t.id,title:t.title,desc:t.desc,created:fmt(t.created),reporter:rev?(t.residentName+' · '+unitStr(t.unit)):'Reporter identity hidden',
+     thread:t.thread.filter(m=>m.role!=='system').map((m,i)=>({key:i,by:m.by,text:m.text,time:fmt(m.time)})),hasThread:t.thread.some(m=>m.role!=='system'),
+     draft:s.drafts[t.id]||'',setDraft:e=>this.setState({drafts:{...s.drafts,[t.id]:e.target.value}}),
+     send:()=>{const txt=s.drafts[t.id]||'';if(!txt.trim())return;this.addReply(t.id,txt,'handler');this.setData(dd=>{const cc=dd.cases.find(x=>x.id===c.id);cc.timeline.push({time:new Date().toISOString(),type:'action',by:this.me().name,text:'Secure message sent to the reporter of '+t.id+'.'});this.log(dd,'Sent secure message on '+t.id);return dd});this.setState({drafts:{...s.drafts,[t.id]:''}});this.toast('Secure message sent. Only the reporter can read it.')}})),
+    hasReports:reports.length>0,
+    statusOptions:CASE_STATUSES,statusDraft:s.statusDraft||c.status,setStatusDraft:e=>this.setState({statusDraft:e.target.value}),
+    statusNote:s.statusNote,setStatusNote:e=>this.setState({statusNote:e.target.value}),
+    applyStatus:()=>{const ns=s.statusDraft||c.status;const note=s.statusNote.trim();this.setData(dd=>{const cc=dd.cases.find(x=>x.id===c.id);cc.status=ns;cc.timeline.push({time:new Date().toISOString(),type:'action',by:this.me().name,text:'Status set to '+ns+'.'+(note?' '+note:'')});
+      cc.timeline.filter(e=>e.type==='report').forEach(e=>{const t=dd.tickets.find(x=>x.id===e.ref);if(t)t.status=ns==='Closed'?'Resolved':'In Review'});this.log(dd,'Updated status on '+c.id+' to '+ns);return dd});this.setState({statusNote:''});this.toast(c.id+' status: '+ns)},
+    classOptions:['VAWC-Related','Child Welfare'],needsClass:c.category==='Pending classification',
+    setClass:e=>{const v=e.target.value;this.setData(dd=>{const cc=dd.cases.find(x=>x.id===c.id);cc.category=v;cc.title=v==='Child Welfare'?'Child welfare assessment':'Household welfare intake';cc.timeline.push({time:new Date().toISOString(),type:'action',by:this.me().name,text:'Classified under '+LAW[v]+'.'});this.log(dd,'Classified '+c.id+' under '+LAW[v]);return dd})},
+    caseNote:s.caseNote,setCaseNote:e=>this.setState({caseNote:e.target.value}),
+    addNote:()=>{const n=s.caseNote.trim();if(!n)return;this.setData(dd=>{dd.cases.find(x=>x.id===c.id).timeline.push({time:new Date().toISOString(),type:'note',by:this.me().name,text:n});this.log(dd,'Added handler note on '+c.id);return dd});this.setState({caseNote:''})}
+   };
+  }
+  return {caseList,openCount:cases.filter(c=>c.status!=='Closed').length,cd,backCases:()=>this.go('cases'),privacy:s.privacy,blur:s.privacy?'blur(12px)':'none',
+   privacyLabel:s.privacy?'Show content':'Quick hide',privacyIcon:ic(s.privacy?'eye':'eye-off'),togglePrivacy:()=>this.setState({privacy:!s.privacy})};
+ }
+ adminVals(s,D){
+  const phases=[0,1,2,3].map(i=>REPORT.cats.reduce((a,c)=>a+c[1][i],0));const total=phases.reduce((a,b)=>a+b,0);
+  const catTotals=REPORT.cats.map(([l,v])=>({l,v:v.reduce((a,b)=>a+b,0)}));const maxC=Math.max(...catTotals.map(c=>c.v));const maxP=Math.max(...phases);
+  const m=s.modal||{};
+  return {
+   pending:D.pending.map(p=>({id:p.id,name:p.name,unit:unitStr(p.unit),rel:p.rel,docs:p.docs.map(x=>({name:x})),submitted:fmt(p.submitted),
+    approve:()=>{this.setData(dd=>{dd.pending=dd.pending.filter(x=>x.id!==p.id);dd.processed.unshift({name:p.name,unit:p.unit,decision:'Approved',time:new Date().toISOString(),reason:''});this.log(dd,'Approved resident registration: '+p.name);return dd});this.toast(p.name+' approved. Account activated.')},
+    deny:()=>this.setState({modal:{type:'deny',id:p.id,name:p.name},denyReason:''})})),
+   hasPending:D.pending.length>0,noPending:D.pending.length===0,pendingCount:D.pending.length,
+   processed:D.processed.map((p,i)=>({key:i,name:p.name,unit:unitStr(p.unit),time:fmt(p.time),reason:p.reason,hasReason:!!p.reason,...badge(p.decision)})),
+   denyName:m.name||'',denyReason:s.denyReason,setDenyReason:e=>this.setState({denyReason:e.target.value}),
+   denyOptions:['Unit ownership could not be matched to HOA records','Submitted ID is unreadable or expired','Duplicate registration for this unit'],
+   confirmDeny:()=>{if(!s.denyReason)return;const p=D.pending.find(x=>x.id===m.id);this.setData(dd=>{dd.pending=dd.pending.filter(x=>x.id!==m.id);dd.processed.unshift({name:p.name,unit:p.unit,decision:'Denied',time:new Date().toISOString(),reason:s.denyReason});this.log(dd,'Denied resident registration: '+p.name);return dd});this.setState({modal:null});this.toast(p.name+' denied. The applicant will be notified with the reason.')},
+   denyDisabled:!s.denyReason,
+   staffList:D.staff.map(x=>({id:x.id,name:x.name,pos:x.pos,role:x.role,active:x.active,responder:x.responder,
+    activeLabel:x.active?'Active':'Deactivated',activeBg:x.active?'#13693F':'var(--border-default)',activeKnob:x.active?'22px':'2px',activeAria:x.active?'true':'false',
+    respLabel:x.responder?'On-duty responder':'Not a responder',respBg:x.responder?'#13693F':'var(--border-default)',respKnob:x.responder?'22px':'2px',respAria:x.responder?'true':'false',
+    isHandlerRole:x.role==='Case Handler',notHandlerRole:x.role!=='Case Handler',
+    toggleActive:()=>{this.setData(dd=>{const y=dd.staff.find(z=>z.id===x.id);y.active=!y.active;this.log(dd,(y.active?'Reactivated':'Deactivated')+' staff account: '+y.name);return dd})},
+    toggleResp:()=>{this.setData(dd=>{const y=dd.staff.find(z=>z.id===x.id);y.responder=!y.responder;this.log(dd,(y.responder?'Granted':'Removed')+' on-duty response permission: '+y.name);return dd})}})),
+   openAddStaff:()=>this.setState({modal:{type:'staff'},ns:{name:'',pos:'',responder:false},nsErr:''}),
+   nsName:s.ns.name,nsPos:s.ns.pos,setNsName:e=>this.setState({ns:{...s.ns,name:e.target.value},nsErr:''}),setNsPos:e=>this.setState({ns:{...s.ns,pos:e.target.value},nsErr:''}),nsErr:s.nsErr||null,
+   nsResp:s.ns.responder?'true':'false',nsRespBg:s.ns.responder?'#13693F':'var(--border-default)',nsRespKnob:s.ns.responder?'22px':'2px',toggleNsResp:()=>this.setState({ns:{...s.ns,responder:!s.ns.responder}}),
+   addStaff:()=>{const n=s.ns;if(n.name.trim().length<3||n.pos.trim().length<2){this.setState({nsErr:'Name and position are required.'});return}this.setData(dd=>{dd.staff.push({id:'S'+Date.now(),name:n.name.trim(),pos:n.pos.trim(),role:'HOA Staff',responder:n.responder,active:true});dd.users.push({id:'u'+Date.now(),name:n.name.trim(),username:n.name.trim().toLowerCase().replace(/[^a-z]+/g,'.'),role:'HOA Staff'});this.log(dd,'Created staff account: '+n.name.trim());return dd});this.setState({modal:null});this.toast('Staff account created for '+n.name.trim()+'.')},
+   rMonth:REPORT.month,rCompiled:REPORT.compiled,rTotal:total,rConf:REPORT.confidential,
+   catBars:catTotals.map(c=>({label:c.l,count:c.v,pct:Math.round(c.v/maxC*100)+'%',iconUrl:ic(CAT[c.l])})),
+   phaseTiles:phases.map((v,i)=>{const top=REPORT.cats.slice().sort((a,b)=>b[1][i]-a[1][i])[0][0];return {label:'Phase '+(i+1),count:v,pct:Math.round(v/maxP*100)+'%',share:Math.round(v/total*100)+'% of month',top}}),
+   phaseRows:REPORT.cats.map(([l,v])=>({label:l,p1:v[0],p2:v[1],p3:v[2],p4:v[3],t:v.reduce((a,b)=>a+b,0)}))
+  };
+ }
+ sysVals(s,D){
+  const ROLES=['Resident','HOA Staff','Case Handler','HOA Admin','System Admin'];
+  const cfg=D.cfg;const tg=(on)=>({bg:on?'#13693F':'var(--border-default)',knob:on?'22px':'2px',aria:on?'true':'false',label:on?'On':'Off'});
+  return {
+   users:D.users.map(u=>({id:u.id,name:u.name,username:u.username,role:u.role,roles:ROLES,isDemo:/\.demo$/.test(u.username),
+    setRole:e=>{const v=e.target.value;this.setData(dd=>{const x=dd.users.find(z=>z.id===u.id);const old=x.role;x.role=v;this.log(dd,'Changed role of '+x.username+' from '+old+' to '+v);return dd});this.toast(u.username+' is now '+v+'.')}})),
+   cfgItems:[
+    {key:'a',label:'Automatic categorization on submission',desc:'Assigns a category the moment a report is submitted. Staff can always reassign.',...tg(cfg.autoCat),toggle:()=>this.setData(dd=>{dd.cfg.autoCat=!dd.cfg.autoCat;this.log(dd,(dd.cfg.autoCat?'Enabled':'Disabled')+' automatic categorization');return dd})},
+    {key:'b',label:'Case-file linking',desc:'Links new reports to an existing case file for the same household or a recurring pattern.',...tg(cfg.linking),toggle:()=>this.setData(dd=>{dd.cfg.linking=!dd.cfg.linking;this.log(dd,(dd.cfg.linking?'Enabled':'Disabled')+' case-file linking');return dd})}
+   ],
+   holdOpts:[1,2,3].map(n=>({label:n+' s',bg:cfg.hold===n?'#FECA09':'transparent',fg:cfg.hold===n?'#0B0B0B':'var(--text-body)',bd:cfg.hold===n?'#FECA09':'var(--border-default)',pressed:cfg.hold===n?'true':'false',pick:()=>this.setData(dd=>{dd.cfg.hold=n;this.log(dd,'Set Assist hold duration to '+n+' s');return dd})})),
+   audit:D.audit.slice(0,60).map((a,i)=>({key:i,time:fmt(a.time),actor:a.actor,role:a.role,action:a.action,isDenied:/^Access denied/.test(a.action),iconUrl:ic(/^Access denied/.test(a.action)?'shield-x':'history')})),
+   auditCount:D.audit.length
+  };
+ }
+}
+</script>
+</body>
+</html>
